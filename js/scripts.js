@@ -69,7 +69,7 @@ function kakaoShare() {
         objectType: 'feed', // 이미지 + 텍스트의 경우 feed
         content: {
         title: '민준 🤍 서윤  결혼합니다.', // 원하는 타이틀
-        description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀, // 텍스트
+        description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀', // 텍스트
         imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress2.jpg?raw=true', //이미지 링크
         link: {
             mobileWebUrl: 'https://friedtigers.github.io/', // 연결될 모바일 웹 링크
