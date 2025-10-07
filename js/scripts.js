@@ -64,53 +64,30 @@ function kakaoShare() {
     //    templateId: '124938'
     // });
 
+    // 메세지 꾸미는 부분
     Kakao.Share.sendDefault({
-      objectType: 'list',
-      headerTitle: '민준 🤍 서윤 결혼합니다.',
-      headerLink: {
-        mobileWebUrl: 'https://friedtigers.github.io',
-        webUrl: 'https://friedtigers.github.io',
-      },
-      contents: [
-        {
-          title: '결혼식 안내',
-          description: '2026.01.25 (일)\n오후 3시 30분 로얄파크 3F 로얄홀',
-          imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress1.jpg?raw=true',
-          link: {
-            mobileWebUrl: 'https://friedtigers.github.io',
-            webUrl: 'https://friedtigers.github.io',
-          },
+        objectType: 'feed', // 이미지 + 텍스트의 경우 feed
+        content: {
+        title: '민준 🤍 서윤  결혼합니다.', // 원하는 타이틀
+        description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀, // 텍스트
+        imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress2.jpg?raw=true', //이미지 링크
+        link: {
+            mobileWebUrl: 'https://friedtigers.github.io/', // 연결될 모바일 웹 링크
+            webUrl: 'https://friedtigers.github.io/', // 연결될 pc 웹 링크
         },
-        {
-          title: '우리의 하루',
-          description: '소중한 추억을 함께 나눕니다.',
-          imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress2.jpg?raw=true',
-          link: {
-            mobileWebUrl: 'https://friedtigers.github.io',
-            webUrl: 'https://friedtigers.github.io',
-          },
         },
+        buttons: [
         {
-          title: '함께 축복해주세요 💕',
-          description: '따뜻한 마음으로 함께해 주세요.',
-          imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress3.jpg?raw=true',
-          link: {
-            mobileWebUrl: 'https://friedtigers.github.io',
-            webUrl: 'https://friedtigers.github.io',
-          },
+            title: '모바일 청첩장 보기', // 메세지 내에 버튼에 쓰여질 텍스트
+            link: {
+            mobileWebUrl: 'https://friedtigers.github.io/', // 연결될 모바일 웹 링크
+            webUrl: 'https://friedtigers.github.io/', // 연결될 모바일 웹 링크
+            },
         },
-      ],
-      buttons: [
-        {
-          title: '모바일 청첩장 보기',
-          link: {
-            mobileWebUrl: 'https://friedtigers.github.io',
-            webUrl: 'https://friedtigers.github.io',
-          },
-        },
-      ],
-      installTalk: true,
-    });
+        ],
+        // 카카오톡 미설치 시 카카오톡 설치 경로이동
+        installTalk: true,
+    })
 }
 
 function toggleFoldable() {
