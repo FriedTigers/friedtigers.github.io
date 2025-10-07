@@ -97,41 +97,99 @@
         
         <!-- D-Day Section -->
         <section class="content-section bg-light" id="dday">
-          <div class="container px-4 px-lg-5 text-center" style="padding-top: 60px; padding-bottom: 60px; font-family: 'Nanum Myeongjo', serif;">
-            <h3 style="font-size: 22px; color: #444;">우리의 결혼식까지</h3>
+          <div class="container px-4 px-lg-5 text-center" style="padding-top: 60px; padding-bottom: 80px; font-family: 'Nanum Myeongjo', serif;">
 
-            <!-- 날짜 표시 (캘린더 스타일) -->
-            <div style="display: inline-block; background-color: white; border: 1px solid #ddd; border-radius: 10px; padding: 20px 40px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-              <div style="font-size: 16px; color: #888;">2026년 1월</div>
-              <div style="font-size: 40px; font-weight: 700; color: #2c3e50;">25</div>
-              <div style="font-size: 15px; color: #888;">(일요일)</div>
+            <!-- 날짜 및 시간 -->
+            <h3 style="font-size: 22px; color: #4a4a4a; margin-bottom: 5px;">2026.01.25</h3>
+            <p style="font-size: 16px; color: #7b7b7b; margin-bottom: 25px;">일요일 오후 3시 30분</p>
+            <hr style="width: 120px; border: none; border-top: 1px solid #ddd; margin: 0 auto 30px auto;">
+
+            <!-- 미니 캘린더 -->
+            <div style="display: inline-block; text-align: center;">
+              <table style="border-collapse: collapse; margin: 0 auto; font-size: 15px; color: #555;">
+                <thead>
+                  <tr style="color: #c45b43;">
+                    <th style="padding: 8px;">일</th>
+                    <th style="padding: 8px;">월</th>
+                    <th style="padding: 8px;">화</th>
+                    <th style="padding: 8px;">수</th>
+                    <th style="padding: 8px;">목</th>
+                    <th style="padding: 8px;">금</th>
+                    <th style="padding: 8px;">토</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+                  <tr><td style="color: #c45b43;">5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+                  <tr>
+                    <td style="color: #c45b43;">12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+                  </tr>
+                  <tr>
+                    <td style="color: #c45b43;">19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+                    <td style="background-color: #f3e8d9; border-radius: 50%; font-weight: bold;">25</td>
+                  </tr>
+                  <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td></tr>
+                </tbody>
+              </table>
             </div>
 
-            <!-- 남은 일수 표시 -->
-            <h2 id="dday-text" style="font-size: 22px; margin-top: 25px; color: #5a614f; font-weight: 400;"></h2>
+            <!-- D-day 카운트다운 -->
+            <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 40px;">
+              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                <div id="days" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                <div style="font-size: 13px; color: #777;">DAYS</div>
+              </div>
+              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                <div id="hours" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                <div style="font-size: 13px; color: #777;">HOUR</div>
+              </div>
+              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                <div id="minutes" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                <div style="font-size: 13px; color: #777;">MIN</div>
+              </div>
+              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                <div id="seconds" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                <div style="font-size: 13px; color: #777;">SEC</div>
+              </div>
+            </div>
+
+            <!-- 남은 일수 문구 -->
+            <p id="dday-message" style="margin-top: 35px; font-size: 16px; color: #4a4a4a;">
+              민준 💕 서윤의 결혼식이 <span id="dday-number" style="color: #c45b43; font-weight: bold;">0</span>일 남았습니다.
+            </p>
           </div>
         </section>
 
-        <!-- D-Day 계산 스크립트 -->
+        <!-- ✅ D-day JS -->
         <script>
-          // 결혼식 날짜 설정
           const weddingDate = new Date("2026-01-25T15:30:00+09:00");
-          const today = new Date();
 
-          // 날짜 차이 계산
-          const diffTime = weddingDate - today;
-          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
 
-          // 결과 표시
-          const ddayText = document.getElementById("dday-text");
-          if (diffDays > 0) {
-            ddayText.innerText = `💛 결혼식까지 D-${diffDays}일 💛`;
-          } else if (diffDays === 0) {
-            ddayText.innerText = "💍 오늘, 저희가 결혼합니다 💍";
-          } else {
-            ddayText.innerText = "💐 감사합니다. 저희는 결혼했습니다 💐";
+            if (diff <= 0) {
+              document.getElementById("dday-message").innerText = "💍 오늘, 저희가 결혼합니다 💍";
+              document.getElementById("countdown").style.display = "none";
+              return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+            document.getElementById("dday-number").textContent = days;
           }
+
+          updateCountdown();
+          setInterval(updateCountdown, 1000);
         </script>
+
 
         <!-- Introduction -->
         <section class="content-section bg-primary text-white text-center" id="services">
