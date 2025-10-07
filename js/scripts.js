@@ -60,7 +60,7 @@ function kakaoShare() {
     Kakao.isInitialized();
     Kakao.Share.sendScrap({
       requestUrl: 'https://friedtigers.github.io',
-      templateId: ${124938},
+      templateId: 124938 ,
     });
 
     // 아래 부분은 주석 처리하여 실행되지 않게 함
