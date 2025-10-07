@@ -94,6 +94,44 @@
                 </div>
             </div>
         </section>
+        
+        <!-- D-Day Section -->
+        <section class="content-section bg-light" id="dday">
+          <div class="container px-4 px-lg-5 text-center" style="padding-top: 60px; padding-bottom: 60px; font-family: 'Nanum Myeongjo', serif;">
+            <h3 style="font-size: 22px; color: #444;">우리의 결혼식까지</h3>
+
+            <!-- 날짜 표시 (캘린더 스타일) -->
+            <div style="display: inline-block; background-color: white; border: 1px solid #ddd; border-radius: 10px; padding: 20px 40px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+              <div style="font-size: 16px; color: #888;">2026년 1월</div>
+              <div style="font-size: 40px; font-weight: 700; color: #2c3e50;">25</div>
+              <div style="font-size: 15px; color: #888;">(일요일)</div>
+            </div>
+
+            <!-- 남은 일수 표시 -->
+            <h2 id="dday-text" style="font-size: 22px; margin-top: 25px; color: #5a614f; font-weight: 400;"></h2>
+          </div>
+        </section>
+
+        <!-- D-Day 계산 스크립트 -->
+        <script>
+          // 결혼식 날짜 설정
+          const weddingDate = new Date("2026-01-25T15:30:00+09:00");
+          const today = new Date();
+
+          // 날짜 차이 계산
+          const diffTime = weddingDate - today;
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          // 결과 표시
+          const ddayText = document.getElementById("dday-text");
+          if (diffDays > 0) {
+            ddayText.innerText = `💛 결혼식까지 D-${diffDays}일 💛`;
+          } else if (diffDays === 0) {
+            ddayText.innerText = "💍 오늘, 저희가 결혼합니다 💍";
+          } else {
+            ddayText.innerText = "💐 감사합니다. 저희는 결혼했습니다 💐";
+          }
+        </script>
 
         <!-- Introduction -->
         <section class="content-section bg-primary text-white text-center" id="services">
