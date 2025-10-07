@@ -58,30 +58,38 @@ function kakaoShare() {
     Kakao.init('7c96defb93355a299eed984f7f2cf82e');
     // SDK 초기화 여부를 판단합니다.
     Kakao.isInitialized();
-    //console.log(Kakao.isInitialized());
+    Kakao.Link.createScrapButton({
+        container: '#kakao-link-btn',
+        requestUrl: 'https://friedtigers.github.io/',
+        templateId: '124938'
+    });
+
+    // 아래 부분은 주석 처리하여 실행되지 않게 함
+    /*
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-        title: '민준 🤍 서윤 결혼합니다.',
-        description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀',
-        imageUrl: 'https://friedtigers.github.io/#!',
-        link: {
-            mobileWebUrl: 'https://friedtigers.github.io/#!',
-            webUrl: 'https://friedtigers.github.io/#!',
-        },
-        },
-        buttons: [
-        {
-            title: '모바일 청첩장 보기',
+            title: '민준 🤍 서윤 결혼합니다.',
+            description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀',
+            imageUrl: 'https://friedtigers.github.io/#!',
             link: {
-            mobileWebUrl: 'https://friedtigers.github.io/#!',
-            webUrl: 'https://friedtigers.github.io/#!',
+                mobileWebUrl: 'https://friedtigers.github.io/#!',
+                webUrl: 'https://friedtigers.github.io/#!',
             },
         },
+        buttons: [
+            {
+                title: '모바일 청첩장 보기',
+                link: {
+                    mobileWebUrl: 'https://friedtigers.github.io/#!',
+                    webUrl: 'https://friedtigers.github.io/#!',
+                },
+            },
         ],
         // 카카오톡 미설치 시 카카오톡 설치 경로이동
         installTalk: true,
-    })
+    });
+    */
 }
 
 function toggleFoldable() {
