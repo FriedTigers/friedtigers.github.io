@@ -6,14 +6,14 @@
 
 // 링크 복사
 function copyLink(){
-	var url = 'https://comgongnuna.github.io/';
+	var url = 'https://comgongnuna.github.io/#!';
 	var textarea = document.createElement("textarea");
 	document.body.appendChild(textarea);
 	textarea.value = url;
 	textarea.select();
 	document.execCommand("copy");
 	document.body.removeChild(textarea);
-	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요💕")
+	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요😊")
 }
 
 // 신부 계좌번호 복사
@@ -64,18 +64,18 @@ function kakaoShare() {
         content: {
         title: '민준 🤍 서윤 결혼합니다.',
         description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀',
-        imageUrl: 'https://friedtigers.github.io/',
+        imageUrl: 'https://friedtigers.github.io/#!',
         link: {
-            mobileWebUrl: 'https://friedtigers.github.io/',
-            webUrl: 'https://friedtigers.github.io/',
+            mobileWebUrl: 'https://friedtigers.github.io/#!',
+            webUrl: 'https://friedtigers.github.io/#!',
         },
         },
         buttons: [
         {
             title: '모바일 청첩장 보기',
             link: {
-            mobileWebUrl: 'https://friedtigers.github.io/',
-            webUrl: 'https://friedtigers.github.io/',
+            mobileWebUrl: 'https://friedtigers.github.io/#!',
+            webUrl: 'https://friedtigers.github.io/#!',
             },
         },
         ],
