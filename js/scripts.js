@@ -55,27 +55,27 @@ function groomsFatherAccountNumber(){
 
 // 카카오톡 공유하기
 function kakaoShare() {
-    Kakao.init('YOUR APP KEY');
+    Kakao.init('7c96defb93355a299eed984f7f2cf82e);
     // SDK 초기화 여부를 판단합니다.
     Kakao.isInitialized();
     //console.log(Kakao.isInitialized());
     Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-        title: '재윤🤍영석 결혼합니다.',
-        description: '2024.03.01\n11시 30분 빌라드지디 청담',
-        imageUrl: 'https://github.com/jaeyun95/jaeyun95.github.io/blob/main/assets/img/main.jpg?raw=true',
+        title: '민준 🤍 서윤 결혼합니다.',
+        description: '2026.01.25 (일) \n오후 3시 30분 로얄파크 3F 로얄홀',
+        imageUrl: '',
         link: {
-            mobileWebUrl: 'https://comgongnuna.github.io/#!',
-            webUrl: 'https://comgongnuna.github.io/#!',
+            mobileWebUrl: 'https://friedtigers.github.io/',
+            webUrl: 'https://friedtigers.github.io/',
         },
         },
         buttons: [
         {
             title: '모바일 청첩장 보기',
             link: {
-            mobileWebUrl: 'https://comgongnuna.github.io/#!',
-            webUrl: 'https://comgongnuna.github.io/#!',
+            mobileWebUrl: 'https://friedtigers.github.io/',
+            webUrl: 'https://friedtigers.github.io/',
             },
         },
         ],
