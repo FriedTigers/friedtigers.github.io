@@ -59,7 +59,6 @@ function kakaoShare() {
     // SDK 초기화 여부를 판단합니다.
     Kakao.isInitialized();
     Kakao.Link.createScrapButton({
-        container: '#kakao-link-btn',
         requestUrl: 'https://friedtigers.github.io/',
         templateId: ${124938}
     });
