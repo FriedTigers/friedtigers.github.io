@@ -423,73 +423,75 @@
 
           <div style="max-width: 420px; margin: 0 auto;">
 
-            <!-- 🕴 신랑측 -->
-            <button onclick="toggleFoldable('.foldable-content', '#toggleIcon')"
-                    style="width: 100%; background-color: #efe8e6; color: #6a5555; border: none; border-radius: 8px; padding: 12px; font-size: 16px; cursor: pointer; margin-bottom: 8px;">
-              신랑측 계좌번호 <span id="toggleIcon">▼</span>
-            </button>
+              <!-- 🕴 신랑측 -->
+              <button onclick="toggleFoldable('#groomContent', '#toggleIconGroom')"
+                      style="width: 100%; background-color: #efe8e6; color: #6a5555; border: none; border-radius: 8px; padding: 12px; font-size: 16px; cursor: pointer; margin-bottom: 8px;">
+                신랑측 계좌번호 <span id="toggleIconGroom">▼</span>
+              </button>
 
-            <div class="foldable-content" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); padding: 0 15px; margin-bottom: 15px;">
-              <div style="padding-top:15px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    신한 | 110-123-456789<br><span style="font-size: 14px; color: #444;">최재만</span>
+              <div id="groomContent"
+                   style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); padding: 0 15px; margin-bottom: 15px;">
+                <div style="padding-top:15px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      신한 | 110-123-456789<br><span style="font-size: 14px; color: #444;">최재만</span>
+                    </div>
+                    <button onclick="copyAccount('110-123-456789')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
                   </div>
-                  <button onclick="copyAccount('110-123-456789')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
-                </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    신한 | 110-987-654321<br><span style="font-size: 14px; color: #444;">최도현</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      신한 | 110-987-654321<br><span style="font-size: 14px; color: #444;">최도현</span>
+                    </div>
+                    <button onclick="copyAccount('110-987-654321')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
                   </div>
-                  <button onclick="copyAccount('110-987-654321')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
-                </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    국민 | 111-222-333444<br><span style="font-size: 14px; color: #444;">김성호</span>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      국민 | 111-222-333444<br><span style="font-size: 14px; color: #444;">김성호</span>
+                    </div>
+                    <button onclick="copyAccount('111-222-333444')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
                   </div>
-                  <button onclick="copyAccount('111-222-333444')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- 👰 신부측 -->
-            <button onclick="toggleFoldable('.foldable-content2', '#toggleIcon2')"
-                    style="width: 100%; background-color: #efe8e6; color: #6a5555; border: none; border-radius: 8px; padding: 12px; font-size: 16px; cursor: pointer; margin-top: 8px;">
-              신부측 계좌번호 <span id="toggleIcon2">▼</span>
-            </button>
-
-            <div class="foldable-content2" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); padding: 0 15px; margin-top: 8px;">
-              <div style="padding-top:15px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    국민 | 123-456-789012<br><span style="font-size: 14px; color: #444;">이윤정</span>
-                  </div>
-                  <button onclick="copyAccount('123-456-789012')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    우리 | 1002-345-678901<br><span style="font-size: 14px; color: #444;">함서윤</span>
-                  </div>
-                  <button onclick="copyAccount('1002-345-678901')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div>
-                    신한 | 222-333-444555<br><span style="font-size: 14px; color: #444;">박미현</span>
-                  </div>
-                  <button onclick="copyAccount('222-333-444555')"
-                          style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
                 </div>
               </div>
-            </div>
+
+              <!-- 👰 신부측 -->
+              <button onclick="toggleFoldable('#brideContent', '#toggleIconBride')"
+                      style="width: 100%; background-color: #efe8e6; color: #6a5555; border: none; border-radius: 8px; padding: 12px; font-size: 16px; cursor: pointer; margin-top: 8px;">
+                신부측 계좌번호 <span id="toggleIconBride">▼</span>
+              </button>
+
+              <div id="brideContent"
+                   style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: white; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); padding: 0 15px; margin-top: 8px;">
+                <div style="padding-top:15px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      국민 | 123-456-789012<br><span style="font-size: 14px; color: #444;">이윤정</span>
+                    </div>
+                    <button onclick="copyAccount('123-456-789012')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      우리 | 1002-345-678901<br><span style="font-size: 14px; color: #444;">함서윤</span>
+                    </div>
+                    <button onclick="copyAccount('1002-345-678901')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div>
+                      신한 | 222-333-444555<br><span style="font-size: 14px; color: #444;">박미현</span>
+                    </div>
+                    <button onclick="copyAccount('222-333-444555')"
+                            style="background: #f4f0ee; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px;">복사</button>
+                  </div>
+                </div>
+              </div>
           </div>
         </section>
 
