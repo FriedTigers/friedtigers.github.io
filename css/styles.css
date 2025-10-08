@@ -105,6 +105,10 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+html, body {
+  touch-action: manipulation;  /* 제스처 제한 */
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
