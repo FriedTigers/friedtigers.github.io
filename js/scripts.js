@@ -16,36 +16,39 @@ function copyLink(){
 	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요😊")
 }
 
-function toggleFoldable() {
-  const content = document.querySelector('.foldable-content');
-  const toggleIcon = document.getElementById('toggleIcon');
-  if (content.style.display === 'none' || content.style.display === '') {
-    content.style.display = 'block';
-    toggleIcon.innerText = '▲';
-  } else {
-    content.style.display = 'none';
+function toggleFoldable(selector, iconSelector) {
+  const content = document.querySelector(selector);
+  const toggleIcon = document.querySelector(iconSelector);
+
+  if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+    content.style.maxHeight = '0';
     toggleIcon.innerText = '▼';
+  } else {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    toggleIcon.innerText = '▲';
   }
 }
 
-function toggleFoldable2() {
-  const content = document.querySelector('.foldable-content2');
-  const toggleIcon = document.getElementById('toggleIcon2');
-  if (content.style.display === 'none' || content.style.display === '') {
-    content.style.display = 'block';
-    toggleIcon.innerText = '▲';
-  } else {
-    content.style.display = 'none';
-    toggleIcon.innerText = '▼';
-  }
-}
-
+// ✅ 클립보드 복사 + 토스트 메시지
 function copyAccount(accountNumber) {
   navigator.clipboard.writeText(accountNumber).then(() => {
-    alert("계좌번호가 복사되었습니다: " + accountNumber);
+    showToast('계좌번호가 복사되었습니다 ✓');
   }).catch(err => {
-    console.error("복사 오류:", err);
+    showToast('복사 중 오류가 발생했습니다.');
+    console.error('복사 오류:', err);
   });
+}
+
+// ✅ 토스트 표시 함수
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+
+  // 2초 후 사라짐
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2000);
 }
 
 // 카카오톡 공유하기
