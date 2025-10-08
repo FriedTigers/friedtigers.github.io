@@ -68,7 +68,7 @@ function kakaoShare() {
         content: {
         title: '민준 🤍 서윤 결혼합니다.', // 원하는 타이틀
         description: '2026.01.25 (일) \n오후 3시 30분 로얄파크컨벤션 3F 로얄홀', // 텍스트
-        imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compress_2.png?raw=true', //이미지 링크
+        imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/compressmain3.png?raw=true', //이미지 링크
         link: {
             mobileWebUrl: 'https://friedtigers.github.io/', // 연결될 모바일 웹 링크
             webUrl: 'https://friedtigers.github.io/', // 연결될 pc 웹 링크
