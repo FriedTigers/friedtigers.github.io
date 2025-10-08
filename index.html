@@ -164,61 +164,67 @@
         
         <!-- D-Day Section -->
         <section class="content-section bg-light" id="dday">
-          <div class="container px-4 px-lg-5 text-center" style="padding-top: 5px; padding-bottom: 20px; font-family: 'Nanum Myeongjo', serif;">
+          <div class="container px-4 px-lg-5 text-center"
+               style="padding-top: 5px; padding-bottom: 20px; font-family: 'Nanum Myeongjo', serif;">
 
             <!-- 날짜 및 시간 -->
             <h3 style="font-size: 22px; color: #4a4a4a; margin-bottom: 5px;">2026.01.25</h3>
             <p style="font-size: 16px; color: #7b7b7b; margin-bottom: 25px;">일요일 오후 3시 30분</p>
             <hr style="width: 120px; border: none; border-top: 1px solid #ddd; margin: 0 auto 30px auto;">
 
-            <!-- 미니 캘린더 -->
-            <div style="display: inline-block; text-align: center;">
-                <table style="border-collapse: collapse; margin: 0 auto; font-size: 15px; color: #555;">
-                  <thead>
-                    <tr style="color: #c45b43;">
-                      <th style="padding: 8px;">일</th>
-                      <th style="padding: 8px;">월</th>
-                      <th style="padding: 8px;">화</th>
-                      <th style="padding: 8px;">수</th>
-                      <th style="padding: 8px;">목</th>
-                      <th style="padding: 8px;">금</th>
-                      <th style="padding: 8px;">토</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- 첫째 주: 1일이 목요일 -->
-                    <tr>
-                      <td></td><td></td><td></td><td></td>
-                      <td>1</td><td>2</td><td>3</td>
-                    </tr>
+            <!-- ✅ 미니 캘린더 -->
+            <div style="display: inline-block; text-align: center; transform: scale(1.5); transform-origin: top center;">
+              
+              <!-- 월 제목 -->
+              <div style="font-size: 20px; color: #c45b43; font-weight: bold; margin-bottom: 10px;">
+                1월
+              </div>
 
-                    <!-- 둘째 주 -->
-                    <tr>
-                      <td style="color: #c45b43;">4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
-                    </tr>
+              <table style="border-collapse: collapse; margin: 0 auto; font-size: 15px; color: #555;">
+                <thead>
+                  <tr style="color: #c45b43;">
+                    <th style="padding: 8px;">일</th>
+                    <th style="padding: 8px;">월</th>
+                    <th style="padding: 8px;">화</th>
+                    <th style="padding: 8px;">수</th>
+                    <th style="padding: 8px;">목</th>
+                    <th style="padding: 8px;">금</th>
+                    <th style="padding: 8px;">토</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 첫째 주: 1일이 목요일 -->
+                  <tr>
+                    <td></td><td></td><td></td><td></td>
+                    <td>1</td><td>2</td><td>3</td>
+                  </tr>
 
-                    <!-- 셋째 주 -->
-                    <tr>
-                      <td style="color: #c45b43;">11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
-                    </tr>
-                    
-                    <!-- 넷째 주 -->
-                    <tr>
-                      <td style="color: #c45b43;">18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
-                    </tr>
+                  <!-- 둘째 주 -->
+                  <tr>
+                    <td style="color: #c45b43;">4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+                  </tr>
 
-                    <!-- 마지막째 주 (25일 일요일 강조) -->
-                    <tr>
-                      <td style="background-color: #f3e8d9; border-radius: 50%; font-weight: bold; color: #c45b43;">25</td>
-                      <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <!-- 셋째 주 -->
+                  <tr>
+                    <td style="color: #c45b43;">11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+                  </tr>
+                  
+                  <!-- 넷째 주 -->
+                  <tr>
+                    <td style="color: #c45b43;">18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+                  </tr>
 
+                  <!-- 마지막째 주 (25일 일요일 강조) -->
+                  <tr>
+                    <td style="background-color: #f3e8d9; border-radius: 50%; font-weight: bold; color: #c45b43;">25</td>
+                    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <!-- D-day 카운트다운 -->
-            <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 40px;">
+            <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 60px;">
               <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
                 <div id="days" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
                 <div style="font-size: 13px; color: #777;">DAYS</div>
@@ -245,7 +251,7 @@
           </div>
         </section>
 
-        <!-- ✅ D-day -->
+        <!-- ✅ D-day Script -->
         <script>
           const weddingDate = new Date("2026-01-25T15:30:00+09:00");
 
