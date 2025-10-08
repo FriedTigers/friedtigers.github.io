@@ -11,6 +11,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
         <!-- Simple line icons-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -333,24 +334,17 @@
                  ">
             </div>
 
-            <!-- ✅ SDK 먼저 로드 -->
-            <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=dddb41c59b2b0031928fe7a3fae04798"></script>
-
-            <!-- ✅ 그 아래에서 실행 -->
-            <script>
-              document.addEventListener("DOMContentLoaded", function() {
-                const mapContainer = document.getElementById('kakao-map');
-                const mapOption = {
-                  center: new kakao.maps.LatLng(37.534476, 126.977215),
-                  level: 3
+            <script type="text/javascript">
+                
+                var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                var options = { //지도를 생성할 때 필요한 기본 옵션
+                    center: new kakao.maps.LatLng(37.534476, 126.977215), //지도의 중심좌표.
+                    level: 3 //지도의 레벨(확대, 축소 정도)
                 };
-                const map = new kakao.maps.Map(mapContainer, mapOption);
-                const markerPosition = new kakao.maps.LatLng(37.534476, 126.977215);
-                const marker = new kakao.maps.Marker({ position: markerPosition });
-                marker.setMap(map);
-              });
-            </script>
 
+                var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+                
+            </script>
 
             <!-- 교통 안내 -->
             <div style="font-size: 15px; color: #555; line-height: 1.8; margin-top: 20px; text-align: left; display: inline-block;">
