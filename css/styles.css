@@ -106,7 +106,10 @@ body {
 }
 
 html, body {
-  touch-action: manipulation;  /* 제스처 제한 */
+      margin: 0;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      overscroll-behavior: none;
 }
 
 hr {
