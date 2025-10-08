@@ -323,6 +323,7 @@
             <!-- 카카오톡지도 -->
             <div id="map"
                  style="
+                   position: relative;
                    margin: 30px auto;
                    width: 100%;
                    max-width: 400px;
@@ -331,13 +332,27 @@
                    overflow: hidden;
                    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
                  ">
+              <!-- ✅ 하단 안내 문구 -->
+              <div style="
+                   position: absolute;
+                   bottom: 0;
+                   width: 100%;
+                   text-align: center;
+                   background: rgba(255, 255, 255, 0.85);
+                   font-size: 13px;
+                   color: #333;
+                   padding: 6px 0;
+                   font-family: 'Noto Sans KR', sans-serif;
+                   border-top: 1px solid rgba(0,0,0,0.05);
+                 ">
+                📍 확대해서 보시려면 지도를 클릭하세요
+              </div>
             </div>
 
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
             <script>
               var container = document.getElementById('map');
               var options = {
-                  // ✅ 중심 좌표를 로얄파크컨벤션에 맞춤
                   center: new kakao.maps.LatLng(37.53679331973669, 126.97549275819166),
                   level: 3
               };
