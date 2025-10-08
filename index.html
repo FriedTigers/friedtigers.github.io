@@ -421,16 +421,38 @@
         <!-- Footer-->
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
         <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-5" title="카카오톡으로 공유하기" href="javascript:kakaoShare()"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-5" title="링크 복사하기" onclick="copyLink(); return false;" href="#!"><i class="fa-solid fa-link"></i></a>
-                    </li>
-                </ul>
-            </div>
+          <div class="container px-4 px-lg-5">
+            <ul class="list-inline">
+
+              <!-- 카카오톡 공유 -->
+              <li class="list-inline-item" style="margin: 10px;">
+                <a class="social-link rounded-circle text-white mr-5"
+                   title="카카오톡으로 공유하기"
+                   href="javascript:kakaoShare()"
+                   style="display: flex; flex-direction: column; align-items: center; text-decoration: none;">
+                  <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 20px; color: white;"></i>
+                  <span style="font-family: 'Gowun Dodum', sans-serif; font-size: 12px; color: white; margin-top: 5px;">
+                    카카오톡으로<br>공유하기
+                  </span>
+                </a>
+              </li>
+
+              <!-- 링크 복사 -->
+              <li class="list-inline-item" style="margin: 10px;">
+                <a class="social-link rounded-circle text-white mr-5"
+                   title="링크 복사하기"
+                   onclick="copyLink(); return false;"
+                   href="#!"
+                   style="display: flex; flex-direction: column; align-items: center; text-decoration: none;">
+                  <i class="fa-solid fa-link" style="font-size: 20px; color: white;"></i>
+                  <span style="font-family: 'Gowun Dodum', sans-serif; font-size: 12px; color: white; margin-top: 5px;">
+                    링크<br>복사하기
+                  </span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
         </footer>
        
         <!-- Bootstrap core JS-->
