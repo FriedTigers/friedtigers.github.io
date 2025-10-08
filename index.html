@@ -344,31 +344,41 @@
                    padding: 6px 0;
                    font-family: 'Noto Sans KR', sans-serif;
                    border-top: 1px solid rgba(0,0,0,0.05);
+                   z-index: 10;
                  ">
                 📍 확대해서 보시려면 지도를 클릭하세요
               </div>
             </div>
 
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
+            <!-- ✅ 카카오맵 SDK -->
+            <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
+
             <script>
+              // 로얄파크컨벤션 좌표
+              var lat = 37.53679331973669;
+              var lng = 126.97549275819166;
+
               var container = document.getElementById('map');
               var options = {
-                  center: new kakao.maps.LatLng(37.53679331973669, 126.97549275819166),
-                  level: 4
+                center: new kakao.maps.LatLng(lat, lng),
+                level: 4
               };
 
               var map = new kakao.maps.Map(container, options);
 
-              // ✅ 마커 표시
-              var markerPosition  = new kakao.maps.LatLng(37.53679331973669, 126.97549275819166);
-              var marker = new kakao.maps.Marker({
-                  position: markerPosition
-              });
+              // ✅ 마커 생성
+              var markerPosition = new kakao.maps.LatLng(lat, lng);
+              var marker = new kakao.maps.Marker({ position: markerPosition });
               marker.setMap(map);
 
-              // ✅ 마커 클릭 시 카카오맵 장소 페이지로 이동
+              // ✅ 마커 클릭 시 장소 페이지 열기
               kakao.maps.event.addListener(marker, 'click', function() {
-                  window.open('https://place.map.kakao.com/1505842477', '_blank');
+                window.open('https://place.map.kakao.com/1505842477', '_blank');
+              });
+
+              // ✅ 지도 아무 곳 클릭 시에도 장소 페이지 열기
+              kakao.maps.event.addListener(map, 'click', function() {
+                window.open('https://place.map.kakao.com/1505842477', '_blank');
               });
             </script>
             
