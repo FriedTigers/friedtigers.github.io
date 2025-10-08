@@ -16,42 +16,18 @@ function copyLink(){
 	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요😊")
 }
 
-// 신부 계좌번호 복사
-function brideAccountNumber(){
-	var bride_account = '00000000 카카오뱅크';
-	var textarea = document.createElement("textarea");
-	document.body.appendChild(textarea);
-	textarea.value = bride_account;
-	textarea.select();
-	document.execCommand("copy");
-	document.body.removeChild(textarea);
-	alert("신부의 계좌번호가 복사되었습니다.\n00000000 카카오뱅크")
-}
+// 계좌번호 토글
+  function toggleAccount(id) {
+    const el = document.getElementById(id);
+    const display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+    el.style.display = display;
+  }
 
-// 신랑 계좌번호 복사
-function groomAccountNumber(){
-	var groom_account = '00000000 카카오뱅크';
-	var textarea = document.createElement("textarea");
-	document.body.appendChild(textarea);
-	textarea.value = groom_account;
-	textarea.select();
-	document.execCommand("copy");
-	document.body.removeChild(textarea);
-	alert("신랑의 계좌번호가 복사되었습니다.\n00000000 카카오뱅크")
-}
-
-// 아버님 계좌번호 복사 
-function groomsFatherAccountNumber(){
-    var grooms_father_account = '00000000 국민은행';
-	var textarea = document.createElement("textarea");
-	document.body.appendChild(textarea);
-	textarea.value = grooms_father_account;
-	textarea.select();
-	document.execCommand("copy");
-	document.body.removeChild(textarea);
-	alert("계좌번호가 복사되었습니다.\n00000000 국민은행")
-}
-
+  // 복사 기능
+  function copyAccount(account) {
+    navigator.clipboard.writeText(account).then(() => {
+      alert('계좌번호가 복사되었습니다: ' + account);
+    });
 
 // 카카오톡 공유하기
 function kakaoShare() {
