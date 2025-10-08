@@ -137,3 +137,14 @@ function toggleFoldable3() {
         // 추가로 접힌 상태에서 수행할 동작 추가 가능
     }
 }
+
+function openTab(tabName) {
+    const contents = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    contents.forEach((content) => content.style.display = 'none');
+    buttons.forEach((btn) => btn.style.borderBottom = 'none');
+
+    document.getElementById(tabName).style.display = 'block';
+    event.currentTarget.style.borderBottom = '2px solid #c45b43';
+  }

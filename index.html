@@ -7,7 +7,7 @@
         <meta charset="utf-8" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>민준 & 서윤</title>
+        <title>민준 & 서윤 결혼합니다.</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -346,7 +346,7 @@
                   네비게이션에 ‘로얄파크 컨벤션’ 검색<br>
                   - 지상, 지하 주차 <strong>1000대</strong> 가능<br>
                   - 전쟁기념관내 주차 가능<br>
-                  - 3F 로얄홀 로비 테블릿으로 주차등록
+                  - 3F 로얄홀 로비 <u>테블릿</u>으로 주차등록
                 </div>
               </p>
 
@@ -357,7 +357,7 @@
                   - 전쟁기념관 하차 : 110A, 110B, 421, 740<br>
                   - 삼각지역 하차 : 421, 100, 150, 151, 152, 500, 501
                   <br>
-                  502, 504, 506, 507, 605, 742, 750A, 750B, 752
+                  502, 504, 506, 507, 605, 742, 750, 752
                   </span>
                 </div>
               </p>
@@ -365,26 +365,43 @@
             </div>
         </section>
 
-        <!-- Information -->
-        <section class="content-section bg-primary text-white">
-            <div class="container px-4 px-lg-5 text-center">
-                <p class="mb-4" style="font-family: 'Song Myung', serif; font-size: 20px;">📢2024.03.01 오전 11시 30분📢<br>빌라드지디 청담</p>
-                <p style="font-family: 'Song Myung', serif; font-size: 16px;"><br>홀에서 예식을 보신 뒤 1층으로 이동하시거나<br>1층에서 스크린으로 예식을 보며 식사 하실 수 있습니다.😊</p>
+        <!-- 예식정보 및 안내사항 Section -->
+        <section class="content-section bg-light" id="information" style="font-family: 'Nanum Myeongjo', serif; padding: 60px 0; text-align: center;">
 
-                <div id="foldableSection">
-                    <p style="font-family: 'Song Myung', serif; font-size: 15px;" class="toggle-button" onclick="toggleFoldable3()">층별 안내<span id="toggleIcon3">▼</span></p>
-                    <div class="foldable-content3" style="display: none;">
-                        <p style="font-family: 'Song Myung', serif; font-size: 10px;">아이콘을 누르시면 페이지로 이동합니다.</p>
-                        <p style="font-family: 'Song Myung', serif; font-size: 12px;">1층&nbsp;&nbsp;-&nbsp;&nbsp;연회장<a class="no-style" href="https://chungdamvilladegd.com/CelesteCusine">🍽</a></p>  
-                        <p style="font-family: 'Song Myung', serif; font-size: 12px;">2층&nbsp;&nbsp;-&nbsp;&nbsp;메인홀<a class="no-style" href="https://chungdamvilladegd.com/EspaceEmpyree">💒</a></p>  
-                        <p style="font-family: 'Song Myung', serif; font-size: 12px;">3층&nbsp;&nbsp;-&nbsp;&nbsp;신부대기실<a class="no-style" href="https://chungdamvilladegd.com/PavillonMariee">👰🏻‍♀️</a></p>  
-                    </div>
-                </div>
-                <a class="btn btn-xl btn-light me-4" style="font-family: 'Song Myung', serif; font-size: 12px;" href="https://chungdamvilladegd.com/Location">오시는 길</a>
-                <a class="btn btn-xl btn-dark" style="font-family: 'Song Myung', serif; font-size: 12px;" href="https://chungdamvilladegd.com/Course">메뉴 보러가기</a>
+          <!-- 상단 제목 -->
+          <p style="letter-spacing: 2px; color: #bca9a9; font-size: 13px;">INFORMATION</p>
+          <h2 style="color: #6a5555; font-size: 22px; margin-bottom: 35px;">예식정보 및 안내사항</h2>
 
-                <p style="font-family: 'Song Myung', serif; font-size: 18px;"><br>축하화환은 정중히 사양합니다.<br>좋은 마음만 감사히 받겠습니다.💐<br></p>
+          <!-- 탭 메뉴 -->
+          <div style="display: inline-block; background-color: #fff; border-radius: 10px; border: 1px solid #e5dede; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 20px; width: 90%; max-width: 480px;">
+            <div style="display: flex; justify-content: space-around; border-bottom: 1px solid #e5dede; margin-bottom: 20px;">
+              <button class="tab-btn active" onclick="openTab('photo')" style="flex:1; padding: 10px; border: none; background: none; color: #6a5555; font-size: 15px; border-bottom: 2px solid #c45b43;">포토부스</button>
+              <button class="tab-btn" onclick="openTab('meal')" style="flex:1; padding: 10px; border: none; background: none; color: #6a5555; font-size: 15px;">식사안내</button>
+              <button class="tab-btn" onclick="openTab('parking')" style="flex:1; padding: 10px; border: none; background: none; color: #6a5555; font-size: 15px;">주차안내</button>
             </div>
+
+            <!-- 탭 내용 -->
+            <div id="photo" class="tab-content" style="display: block; color: #4a4a4a; font-size: 15px; line-height: 1.8;">
+              예식장 로비 내 포토부스가 준비되어 있습니다.<br>
+              사진 촬영 후 즉석 인화가 가능합니다.<br>
+              두 사람의 소중한 추억을 함께 남겨주세요.
+            </div>
+
+            <div id="meal" class="tab-content" style="display: none; color: #4a4a4a; font-size: 15px; line-height: 1.8;">
+              식사는 결혼식 및 사진 촬영이 끝난 후<br>
+              웨딩홀 2층에서 뷔페식으로 진행됩니다.<br><br>
+              부족함 없이 즐기실 수 있도록<br>
+              한식을 비롯해 중식, 양식, 일식 등<br>
+              다양한 메뉴가 준비되어 있습니다.
+            </div>
+
+            <div id="parking" class="tab-content" style="display: none; color: #4a4a4a; font-size: 15px; line-height: 1.8;">
+              전쟁기념관 내 지상 및 지하 주차장 이용 가능<br>
+              3F 로얄홀 로비의 <u style="text-decoration-color:#c45b43;">테블릿</u>으로 주차 등록 후 이용 가능합니다.<br>
+              주차 공간은 약 1000대까지 마련되어 있습니다.
+            </div>
+          </div>
+
         </section>
 
         
