@@ -16,18 +16,35 @@ function copyLink(){
 	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요😊")
 }
 
-//계좌번호 복사
-function toggleAccount(id) {
-  const section = document.getElementById(id);
-  section.style.display = (section.style.display === "none" || section.style.display === "") ? "block" : "none";
+function toggleFoldable() {
+  const content = document.querySelector('.foldable-content');
+  const toggleIcon = document.getElementById('toggleIcon');
+  if (content.style.display === 'none' || content.style.display === '') {
+    content.style.display = 'block';
+    toggleIcon.innerText = '▲';
+  } else {
+    content.style.display = 'none';
+    toggleIcon.innerText = '▼';
+  }
+}
+
+function toggleFoldable2() {
+  const content = document.querySelector('.foldable-content2');
+  const toggleIcon = document.getElementById('toggleIcon2');
+  if (content.style.display === 'none' || content.style.display === '') {
+    content.style.display = 'block';
+    toggleIcon.innerText = '▲';
+  } else {
+    content.style.display = 'none';
+    toggleIcon.innerText = '▼';
+  }
 }
 
 function copyAccount(accountNumber) {
   navigator.clipboard.writeText(accountNumber).then(() => {
     alert("계좌번호가 복사되었습니다: " + accountNumber);
   }).catch(err => {
-    alert("복사 중 오류가 발생했습니다.");
-    console.error(err);
+    console.error("복사 오류:", err);
   });
 }
 
@@ -66,54 +83,6 @@ function kakaoShare() {
         // 카카오톡 미설치 시 카카오톡 설치 경로이동
         installTalk: true,
     })
-}
-
-function toggleFoldable() {
-    var content = document.querySelector('.foldable-content');
-    var toggleIcon = document.getElementById('toggleIcon');
-
-    // 펼치기/접기 상태 변경
-    if (content.style.display === 'none') {
-        content.style.display = 'block';
-        toggleIcon.innerText = '▲';
-        // 추가로 펼쳐진 상태에서 수행할 동작 추가 가능
-    } else {
-        content.style.display = 'none';
-        toggleIcon.innerText = '▼';
-        // 추가로 접힌 상태에서 수행할 동작 추가 가능
-    }
-}
-
-function toggleFoldable2() {
-    var content = document.querySelector('.foldable-content2');
-    var toggleIcon = document.getElementById('toggleIcon2');
-
-    // 펼치기/접기 상태 변경
-    if (content.style.display === 'none') {
-        content.style.display = 'block';
-        toggleIcon.innerText = '▲';
-        // 추가로 펼쳐진 상태에서 수행할 동작 추가 가능
-    } else {
-        content.style.display = 'none';
-        toggleIcon.innerText = '▼';
-        // 추가로 접힌 상태에서 수행할 동작 추가 가능
-    }
-}
-
-function toggleFoldable3() {
-    var content = document.querySelector('.foldable-content3');
-    var toggleIcon = document.getElementById('toggleIcon3');
-
-    // 펼치기/접기 상태 변경
-    if (content.style.display === 'none') {
-        content.style.display = 'block';
-        toggleIcon.innerText = '▲';
-        // 추가로 펼쳐진 상태에서 수행할 동작 추가 가능
-    } else {
-        content.style.display = 'none';
-        toggleIcon.innerText = '▼';
-        // 추가로 접힌 상태에서 수행할 동작 추가 가능
-    }
 }
 
 function openTab(tabName) {
