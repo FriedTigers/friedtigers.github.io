@@ -321,42 +321,18 @@
                 </div>
             </div>
             
-            <!-- ✅ 2. 지도 표시 영역 -->
-            <div id="kakao-map"
-                 style="
-                   margin: 30px auto;
-                   width: 100%;
-                   max-width: 400px;
-                   height: 310px;
-                   border-radius: 12px;
-                   overflow: hidden;
-                   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-                 ">
-            </div>
+            <!-- 카카오톡지도 -->
+            <div id="map" style="width:500px;height:400px;"></div>
+                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
+                <script>
+                    var container = document.getElementById('map');
+                    var options = {
+                        center: new kakao.maps.LatLng(33.450701, 126.570667),
+                        level: 3
+                    };
 
-            <!-- ✅ 3. 지도 초기화 스크립트 -->
-            <script>
-              window.onload = function () {
-                kakao.maps.load(function () {
-                  const mapContainer = document.getElementById('kakao-map');
-                  const mapOption = {
-                    center: new kakao.maps.LatLng(37.534476, 126.977215),
-                    level: 3
-                  };
-
-                  const map = new kakao.maps.Map(mapContainer, mapOption);
-                  const markerPosition = new kakao.maps.LatLng(37.534476, 126.977215);
-                  const marker = new kakao.maps.Marker({ position: markerPosition });
-                  marker.setMap(map);
-
-                  kakao.maps.event.addListener(marker, 'click', function() {
-                    window.open('https://place.map.kakao.com/1505842477', '_blank');
-                  });
-
-                  map.setZoomable(false);
-                });
-              };
-            </script>
+                    var map = new kakao.maps.Map(container, options);
+                </script>
 
             <!-- 교통 안내 -->
             <div style="font-size: 15px; color: #555; line-height: 1.8; margin-top: 20px; text-align: left; display: inline-block;">
