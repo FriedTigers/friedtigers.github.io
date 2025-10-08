@@ -37,31 +37,54 @@
         <!-- Header -->
         <header class="masthead d-flex align-items-end"
                 style="
+                    position: relative;
                     height: 100vh;
                     padding-bottom: 20px;
-                    background-image: url('assets/img/compressmain2.png');
-                    background-size: cover;
-                    background-position: center top;
-                    background-repeat: no-repeat;
-                    background-attachment: initial; /* ← scroll 대신 완전 해제 */
-                    transform: translateZ(0);       /* GPU 가속 제거 */
-                    will-change: auto;              /* 스크롤 시 리렌더링 방지 */
-                    overflow: hidden;               /* 확대 효과 억제 */
+                    overflow: hidden;
                 ">
+
+            <!-- 📸 배경 이미지 (object-fit으로 고정) -->
+            <img src="assets/img/compressmain2.png"
+                 alt="김민준 · 함서윤 메인 이미지"
+                 style="
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 100%;
+                     object-fit: cover;
+                     object-position: center top;
+                     z-index: -1;
+                     transform: none;
+                 ">
 
             <!-- ✨ 중앙 정렬 컨테이너 -->
             <div class="container px-4 px-lg-5 text-center">
 
-                <!-- 이름 (현재 주석 처리됨) -->
-                <!-- <h2 style="font-family: 'Nanum Myeongjo', serif; color: white; font-weight: 400; font-size: 36px; letter-spacing: 1px;">
+                <!-- 이름 -->
+                <h2 style="
+                    font-family: 'Nanum Myeongjo', serif;
+                    color: white;
+                    font-weight: 400;
+                    font-size: 36px;
+                    letter-spacing: 1px;
+                    margin-bottom: 10px;
+                ">
                     김민준 · 함서윤
                 </h2>
 
-                <p style="font-family: 'Nanum Myeongjo', serif; color: white; font-size: 17px; margin-top: 20px; line-height: 1.8;">
+                <!-- 날짜 및 장소 -->
+                <p style="
+                    font-family: 'Nanum Myeongjo', serif;
+                    color: white;
+                    font-size: 17px;
+                    margin-top: 20px;
+                    line-height: 1.8;
+                ">
                     2026.01.25 (일)<br>
                     오후 3시 30분<br>
                     로얄파크 컨벤션 3F 로얄홀
-                </p> -->
+                </p>
             </div>
         </header>
 
