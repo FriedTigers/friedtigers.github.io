@@ -321,7 +321,17 @@
             </div>
             
             <!-- 카카오톡지도 -->
-            <div id="map" style="width:500px;height:400px;"></div>
+            <div id="map"
+                 style="
+                   margin: 30px auto;
+                   width: 100%;
+                   max-width: 400px;
+                   height: 310px;
+                   border-radius: 12px;
+                   overflow: hidden;
+                   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+                 ">
+            </div>
                 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c96defb93355a299eed984f7f2cf82e"></script>
                 <script>
                     var container = document.getElementById('map');
