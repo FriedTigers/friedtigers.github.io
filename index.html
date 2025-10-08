@@ -320,7 +320,7 @@
                 </div>
             </div>
             
-            <!-- 카카오 지도 Section (모바일 호환 완벽 버전) -->
+            <!-- 카카오 지도 Section (정적 지도 + 앱 연동) -->
             <div style="
               margin: 30px auto;
               max-width: 400px;
@@ -331,27 +331,36 @@
               background-color: #fff;
             ">
 
-              <!-- 카카오맵 이동 버튼 -->
+              <!-- 지도 이미지 (클릭 시 앱/웹 연결) -->
               <a href="https://place.map.kakao.com/1505842477"
-                 target="_blank"
-                 style="display: block; text-decoration: none; color: inherit;">
-                <div style="
-                  padding: 30px 0;
-                  background-color: #faf7f5;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: center;
-                ">
-                  <img src="assets/img/map/kakao-map.png"
-                       alt="카카오맵 아이콘"
-                       width="80"
-                       style="margin-bottom: 10px;">
-                  <p style="font-family: 'Nanum Myeongjo', serif; font-size: 16px; color: #c45b43; margin: 0;">
-                    📍 로얄파크컨벤션 위치 보기
-                  </p>
-                </div>
+                 onclick="openKakaoMap(event)"
+                 style="display: block;">
+                <img
+                  src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?w=504&h=310&center=126.9772,37.5345&level=16&markers=type:d|size:mid|pos:126.9772%2037.5345|label:로얄파크컨벤션"
+                  alt="로얄파크 컨벤션 지도 미리보기"
+                  style="width: 100%; height: auto; border: 0;"
+                >
               </a>
+
+              <!-- 하단 정보 (카카오맵 로고 & 링크) -->
+              <div style="
+                overflow: hidden;
+                padding: 10px 12px;
+                border-top: 1px solid rgba(0,0,0,0.1);
+                background-color: #f9f9f9;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              ">
+                <img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png"
+                     width="72" height="16" alt="카카오맵 로고">
+                <a href="https://place.map.kakao.com/1505842477"
+                   target="_blank"
+                   style="font-size: 13px; text-decoration: none; color: #c45b43; font-weight: 500;">
+                   📍 지도 크게 보기
+                </a>
+              </div>
+            </div>
 
               <!-- 하단 정보 -->
               <div style="
