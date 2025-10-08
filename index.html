@@ -58,20 +58,31 @@
                      transform: none;
                  ">
 
-            <!-- ✨ 중앙 정렬 컨테이너 -->
-            <div class="container px-4 px-lg-5 text-center">
+                 <!-- ✨ 중앙 정렬 컨테이너 -->
+                 <div class="container px-4 px-lg-5 text-center"
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;          /* 화면 전체 높이 */
+                        position: relative;
+                        transform: translateY(20%); /* 화면 중간보다 약간 아래로 이동 */
+                      ">
 
-                <!-- 이름 -->
-                <h2 style="
-                    font-family: 'Nanum Myeongjo', serif;
-                    color: white;
-                    font-weight: 400;
-                    font-size: 36px;
-                    letter-spacing: 1px;
-                    margin-bottom: 10px;
-                ">
-                    김민준 · 함서윤
-                </h2>
+                   <!-- 이름 -->
+                   <h2 style="
+                       font-family: 'Nanum Myeongjo', serif;
+                       color: white;
+                       font-weight: 400;
+                       font-size: 36px;
+                       letter-spacing: 1px;
+                       margin-bottom: 10px;
+                   ">
+                       김민준 · 함서윤
+                   </h2>
+
+                 </div>
 
                 <!-- 날짜 및 장소 -->
                 <!--
