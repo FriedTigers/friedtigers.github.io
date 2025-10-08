@@ -305,11 +305,41 @@
                 </div>
             </div>
             
-            <!-- 지도 (Google Maps embed) -->
-            <div style="margin: 30px auto; max-width: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.15);">
-              <iframe
-                src="https://www.google.com/maps?q=로얄파크%20컨벤션%20인천&output=embed"
-                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <!-- 카카오 지도 Section -->
+            <div style="
+              margin: 30px auto;
+              max-width: 400px;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+              text-align: center;
+            ">
+              <!-- 지도 이미지 (클릭 시 카카오맵으로 이동) -->
+              <a href="https://map.kakao.com/?urlX=494580&urlY=1121475&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank">
+                <img
+                  src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=494580&MY=1121475&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo"
+                  alt="로얄파크 컨벤션 지도"
+                  style="width: 100%; height: auto; border: 0;"
+                >
+              </a>
+
+              <!-- 하단 정보 (카카오맵 로고 & 링크) -->
+              <div style="
+                overflow: hidden;
+                padding: 10px 12px;
+                border-top: 1px solid rgba(0,0,0,0.1);
+                background-color: #f9f9f9;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              ">
+                <img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵 로고">
+                <a href="https://map.kakao.com/?urlX=494580&urlY=1121475&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false"
+                   target="_blank"
+                   style="font-size: 13px; text-decoration: none; color: #c45b43; font-weight: 500;">
+                   📍 지도 크게 보기
+                </a>
+              </div>
             </div>
 
             <!-- 교통 안내 -->
