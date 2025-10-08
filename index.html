@@ -320,7 +320,7 @@
                 </div>
             </div>
             
-            <!-- 카카오 지도 Section (정적 지도 + 앱 연동) -->
+            <!-- 카카오 지도 Section (공식 Static Map API 버전) -->
             <div style="
               margin: 30px auto;
               max-width: 400px;
@@ -331,18 +331,18 @@
               background-color: #fff;
             ">
 
-              <!-- 지도 이미지 (클릭 시 앱/웹 연결) -->
+              <!-- 지도 미리보기 (클릭 시 카카오맵 앱 또는 웹으로 이동) -->
               <a href="https://place.map.kakao.com/1505842477"
                  onclick="openKakaoMap(event)"
                  style="display: block;">
                 <img
-                  src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?w=504&h=310&center=126.9772,37.5345&level=16&markers=type:d|size:mid|pos:126.9772%2037.5345|label:로얄파크컨벤션"
+                  src="https://dapi.kakao.com/v2/maps/staticmap?appkey=906eb486e8aed5f5570c1481cb0196b3&center=126.977215,37.534476&level=3&size=504x310&markers=126.977215,37.534476"
                   alt="로얄파크 컨벤션 지도 미리보기"
                   style="width: 100%; height: auto; border: 0;"
                 >
               </a>
 
-              <!-- 하단 정보 (카카오맵 로고 & 링크) -->
+              <!-- 하단 정보 -->
               <div style="
                 overflow: hidden;
                 padding: 10px 12px;
