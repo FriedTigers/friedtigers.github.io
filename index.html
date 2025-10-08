@@ -229,63 +229,68 @@
               </table>
             </div>
 
-            <!-- D-day 카운트다운 -->
-            <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 60px;">
-              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
-                <div id="days" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
-                <div style="font-size: 13px; color: #777;">DAYS</div>
+            <!-- ✅ D-day 카운트다운 -->
+            <div style="
+              display: inline-block;
+              transform: scale(0.67);
+              transform-origin: top center;
+            ">
+
+              <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 60px;">
+                <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                  <div id="days" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                  <div style="font-size: 13px; color: #777;">DAYS</div>
+                </div>
+                <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                  <div id="hours" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                  <div style="font-size: 13px; color: #777;">HOUR</div>
+                </div>
+                <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                  <div id="minutes" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                  <div style="font-size: 13px; color: #777;">MIN</div>
+                </div>
+                <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
+                  <div id="seconds" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
+                  <div style="font-size: 13px; color: #777;">SEC</div>
+                </div>
               </div>
-              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
-                <div id="hours" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
-                <div style="font-size: 13px; color: #777;">HOUR</div>
-              </div>
-              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
-                <div id="minutes" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
-                <div style="font-size: 13px; color: #777;">MIN</div>
-              </div>
-              <div style="background-color: #fff8f3; padding: 15px 20px; border-radius: 10px;">
-                <div id="seconds" style="font-size: 28px; color: #c45b43; font-weight: bold;">0</div>
-                <div style="font-size: 13px; color: #777;">SEC</div>
-              </div>
+
+              <!-- 남은 일수 문구 -->
+              <p id="dday-message" style="margin-top: 35px; font-size: 16px; color: #4a4a4a;">
+                민준 <span style="color: #c45b43;">♥</span> 서윤의 결혼식이
+                <span id="dday-number" style="color: #c45b43; font-weight: bold;">0</span>일 남았습니다.
+              </p>
             </div>
 
-            <!-- 남은 일수 문구 -->
-            <p id="dday-message" style="margin-top: 35px; font-size: 16px; color: #4a4a4a;">
-              민준 <span style="color: #c45b43;">♥</span> 서윤의 결혼식이
-              <span id="dday-number" style="color: #c45b43; font-weight: bold;">0</span>일 남았습니다.
-            </p>
-          </div>
-        </section>
+            <!-- ✅ D-day Script -->
+            <script>
+              const weddingDate = new Date("2026-01-25T15:30:00+09:00");
 
-        <!-- ✅ D-day Script -->
-        <script>
-          const weddingDate = new Date("2026-01-25T15:30:00+09:00");
+              function updateCountdown() {
+                const now = new Date();
+                const diff = weddingDate - now;
 
-          function updateCountdown() {
-            const now = new Date();
-            const diff = weddingDate - now;
+                if (diff <= 0) {
+                  document.getElementById("dday-message").innerText = "💍 오늘, 저희가 결혼합니다 💍";
+                  document.getElementById("countdown").style.display = "none";
+                  return;
+                }
 
-            if (diff <= 0) {
-              document.getElementById("dday-message").innerText = "💍 오늘, 저희가 결혼합니다 💍";
-              document.getElementById("countdown").style.display = "none";
-              return;
-            }
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+                document.getElementById("dday-number").textContent = days;
+              }
 
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
-            document.getElementById("dday-number").textContent = days;
-          }
-
-          updateCountdown();
-          setInterval(updateCountdown, 1000);
-        </script>
+              updateCountdown();
+              setInterval(updateCountdown, 1000);
+            </script>
 
 
         <!-- Photo Zone -->
