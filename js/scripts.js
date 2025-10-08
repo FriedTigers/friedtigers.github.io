@@ -16,18 +16,20 @@ function copyLink(){
 	alert("링크가 복사되었습니다. 널리널리 퍼뜨려주세요😊")
 }
 
-// 계좌번호 토글
-  function toggleAccount(id) {
-    const el = document.getElementById(id);
-    const display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
-    el.style.display = display;
-  }
+//계좌번호 복사
+function toggleAccount(id) {
+  const section = document.getElementById(id);
+  section.style.display = (section.style.display === "none" || section.style.display === "") ? "block" : "none";
+}
 
-  // 복사 기능
-  function copyAccount(account) {
-    navigator.clipboard.writeText(account).then(() => {
-      alert('계좌번호가 복사되었습니다: ' + account);
-    });
+function copyAccount(accountNumber) {
+  navigator.clipboard.writeText(accountNumber).then(() => {
+    alert("계좌번호가 복사되었습니다: " + accountNumber);
+  }).catch(err => {
+    alert("복사 중 오류가 발생했습니다.");
+    console.error(err);
+  });
+}
 
 // 카카오톡 공유하기
 function kakaoShare() {
