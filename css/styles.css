@@ -112,6 +112,7 @@ html, body {
       touch-action: manipulation;
       -webkit-user-select: none;
       overscroll-behavior: none;
+      justify-content: center;  /* 가로 중앙 정렬 */
 }
 
 /* ✅ Masonry Layout */
