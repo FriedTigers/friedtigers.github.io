@@ -64,6 +64,7 @@
                      object-position: center top;
                      z-index: -1;
                      transform: none;
+                     pointer-events:auto;
                  ">
 
                  <!-- ✨ 중앙 정렬 컨테이너 -->
@@ -349,7 +350,7 @@
             <!-- ✅ 큰 메인 이미지 (크기 절반으로 축소) -->
                 <div id="main-photo-container" style="margin-bottom: 20px;">
                   <img id="main-photo" src="assets/img/gallery/1.jpg" alt="메인 사진"
-                       style="width: 70%; max-width: 200px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+                       style="width: 70%; max-width: 200px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); transition: all 0.3s ease; pointer-events:auto;">
                 </div>
 
             <!-- ✅ 썸네일 슬라이드 -->
@@ -371,12 +372,12 @@
                      padding-bottom: 10px;
                      scrollbar-width: none; /* Firefox */
                    ">
-                <img src="assets/img/gallery/1.jpg" alt="사진1" class="thumbnail active">
-                <img src="assets/img/gallery/2.jpg" alt="사진2" class="thumbnail">
-                <img src="assets/img/gallery/3.jpg" alt="사진3" class="thumbnail">
-                <img src="assets/img/gallery/4.jpg" alt="사진4" class="thumbnail">
-                <img src="assets/img/gallery/5.jpg" alt="사진5" class="thumbnail">
-                <img src="assets/img/gallery/6.jpg" alt="사진6" class="thumbnail">
+                <img src="assets/img/gallery/1.jpg" alt="사진1" class="thumbnail active" style="pointer-events:auto;">
+                <img src="assets/img/gallery/2.jpg" alt="사진2" class="thumbnail" style="pointer-events:auto;">
+                <img src="assets/img/gallery/3.jpg" alt="사진3" class="thumbnail" style="pointer-events:auto;">
+                <img src="assets/img/gallery/4.jpg" alt="사진4" class="thumbnail" style="pointer-events:auto;">
+                <img src="assets/img/gallery/5.jpg" alt="사진5" class="thumbnail" style="pointer-events:auto;">
+                <img src="assets/img/gallery/6.jpg" alt="사진6" class="thumbnail" style="pointer-events:auto;">
               </div>
 
               <button id="thumb-next" style="

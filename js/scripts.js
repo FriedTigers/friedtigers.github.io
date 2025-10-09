@@ -129,31 +129,41 @@ document.getElementById('thumb-next').addEventListener('click', () => {
 gallery.scrollBy({ left: 150, behavior: 'smooth' });
 });
 
-// ✅ 1️⃣ 마우스 오른쪽 클릭 방지
+// ✅ 1️⃣ 우클릭 방지
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   });
 
-  // ✅ 2️⃣ 드래그로 이미지 끌기 방지
+  // ✅ 2️⃣ 이미지 드래그 방지
   document.addEventListener('dragstart', function(e) {
     if (e.target.tagName === 'IMG') {
       e.preventDefault();
     }
   });
 
-  // ✅ 3️⃣ 이미지 선택 방지 (더블클릭/드래그 선택 등)
-  document.addEventListener('selectstart', function(e) {
-    if (e.target.tagName === 'IMG') {
+  // ✅ 3️⃣ 터치 오래 누르기 방지 (모바일)
+  document.addEventListener('touchstart', function(e) {
+    clearTimeout(window.touchTimer);
+    window.touchTimer = setTimeout(function() {
       e.preventDefault();
-    }
+    }, 400);
+  });
+  document.addEventListener('touchend', function(e) {
+    clearTimeout(window.touchTimer);
   });
 
-  // ✅ 4️⃣ 모바일에서 ‘길게 눌러 저장’ 방지
-  document.addEventListener('touchstart', function(e) {
-    if (e.target.tagName === 'IMG') {
-      e.target.style.pointerEvents = 'none';
-      setTimeout(() => {
-        e.target.style.pointerEvents = 'auto';
-      }, 300);
+  // ✅ 4️⃣ 이미지 더블탭 확대 방지 (iOS)
+  document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+  });
+
+  // ✅ 5️⃣ 개발자도구 F12 감지 (일반인 방어 수준)
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
     }
   });
