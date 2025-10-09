@@ -307,8 +307,16 @@
             </div>
 
             <!-- ✅ Carousel -->
-            <div id="weddingCarousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner" style="max-width: 480px; margin: 0 auto; border-radius: 10px; overflow: hidden;">
+            <div id="weddingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+              <div class="carousel-inner"
+                   style="
+                     max-width: 480px;
+                     margin: 0 auto;
+                     border-radius: 10px;
+                     overflow: hidden;
+                     transform: scale(0.5);           /* 📉 크기 절반 축소 */
+                     transform-origin: center center; /* 중앙 기준으로 축소 */
+                   ">
 
                 <!-- 사진 1 -->
                 <div class="carousel-item active">
@@ -324,22 +332,24 @@
                 <div class="carousel-item">
                   <img src="assets/img/gallery/3.jpg" class="d-block w-100" alt="신랑신부 사진 3">
                 </div>
-
               </div>
 
               <!-- ✅ 좌우 이동 버튼 -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev"
+                      style="filter: invert(100%); width: 5%;">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
 
-              <button class="carousel-control-next" type="button" data-bs-target="#weddingCarousel" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#weddingCarousel" data-bs-slide="next"
+                      style="filter: invert(100%); width: 5%;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
           </div>
         </section>
+
         
         <!-- 오시는 길 Section -->
         <section class="content-section bg-light" id="location" style="padding-bottom: 20px;">
