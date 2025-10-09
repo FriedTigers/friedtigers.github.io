@@ -8,6 +8,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
         <script>
               document.addEventListener('gesturestart', function (e) {
                 e.preventDefault();
@@ -301,51 +303,43 @@
 
         <!-- 📸 Photo Gallery Section -->
         <section class="content-section" id="portfolio" style="background-color: #fff;">
-          <div class="container px-4 px-lg-5 text-center">
+          <div class="container px-4 px-lg-5 text-center" style="font-family: 'Nanum Myeongjo', serif;">
             <div class="content-section-heading">
               <p style="font-size: 22px; color: #c45b43; margin-top: 5px; margin-bottom: 25px;">| 갤러리 |</p>
             </div>
 
-            <!-- ✅ Carousel -->
-            <div id="weddingCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
-              <div class="carousel-inner"
-                   style="
-                     max-width: 480px;
-                     margin: 0 auto;
-                     border-radius: 10px;
-                     overflow: hidden;
-                     transform: scale(0.5);           /* 📉 크기 절반 축소 */
-                     transform-origin: center center; /* 중앙 기준으로 축소 */
-                   ">
-
-                <!-- 사진 1 -->
-                <div class="carousel-item active">
-                  <img src="assets/img/gallery/1.jpg" class="d-block w-100" alt="신랑신부 사진 1">
-                </div>
-
-                <!-- 사진 2 -->
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/2.jpg" class="d-block w-100" alt="신랑신부 사진 2">
-                </div>
-
-                <!-- 사진 3 -->
-                <div class="carousel-item">
-                  <img src="assets/img/gallery/3.jpg" class="d-block w-100" alt="신랑신부 사진 3">
-                </div>
+            <!-- ✅ Masonry-Style Grid -->
+            <div class="row g-3 justify-content-center" style="max-width: 800px; margin: 0 auto;">
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/1.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/1.jpg" class="img-fluid rounded" alt="사진1">
+                </a>
               </div>
-
-              <!-- ✅ 좌우 이동 버튼 -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev"
-                      style="filter: invert(100%); width: 5%;">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-
-              <button class="carousel-control-next" type="button" data-bs-target="#weddingCarousel" data-bs-slide="next"
-                      style="filter: invert(100%); width: 5%;">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/2.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/2.jpg" class="img-fluid rounded" alt="사진2">
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/3.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/3.jpg" class="img-fluid rounded" alt="사진3">
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/4.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/4.jpg" class="img-fluid rounded" alt="사진4">
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/5.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/5.jpg" class="img-fluid rounded" alt="사진5">
+                </a>
+              </div>
+              <div class="col-6 col-md-4">
+                <a href="assets/img/gallery/6.jpg" class="glightbox" data-gallery="wedding-gallery">
+                  <img src="assets/img/gallery/6.jpg" class="img-fluid rounded" alt="사진6">
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -669,6 +663,21 @@
             bottom: 60px;
           }
         </style>
+        
+        <!-- ✅ JS 라이브러리 불러오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+        <script>
+          // ✅ Lightbox + Swiper 초기화
+          const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,   // 모바일 손가락 드래그 가능
+            loop: true,              // 마지막 → 첫 번째 순환
+            zoomable: true,
+            autoplayVideos: false
+          });
+        </script>
 
         <!-- Footer -->
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
