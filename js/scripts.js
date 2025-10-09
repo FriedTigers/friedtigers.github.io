@@ -99,68 +99,6 @@ function openTab(tabName) {
     event.currentTarget.style.borderBottom = '2px solid #c45b43';
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const mainPhoto = document.getElementById("main-photo");
-  const thumbnails = document.querySelectorAll(".thumbnail");
-  const gallery = document.getElementById("thumbnail-gallery");
-  const progressFill = document.getElementById("progress-fill");
-  const btnPrev = document.getElementById("thumb-prev");
-  const btnNext = document.getElementById("thumb-next");
-
-  // ✅ 썸네일 클릭 시 메인 이미지 변경 (페이드 효과 포함)
-  thumbnails.forEach((thumb, index) => {
-    thumb.addEventListener("click", () => {
-      if (mainPhoto.src === thumb.src) return; // 같은 이미지면 무시
-
-      // 페이드 아웃 → 이미지 변경 → 페이드 인
-      mainPhoto.classList.add("fade-out");
-      setTimeout(() => {
-        mainPhoto.src = thumb.src;
-        mainPhoto.classList.remove("fade-out");
-      }, 250);
-
-      // 썸네일 active 표시
-      thumbnails.forEach(t => t.classList.remove("active"));
-      thumb.classList.add("active");
-
-      // 진행바 업데이트
-      updateProgress(index);
-    });
-  });
-
-  // ✅ 진행바 업데이트
-  function updateProgress(index) {
-    const total = thumbnails.length;
-    const percent = ((index + 1) / total) * 100;
-    progressFill.style.width = `${percent}%`;
-  }
-
-  // ✅ 좌우 버튼 클릭
-  const scrollAmount = 120;
-  btnPrev.addEventListener("click", () => {
-    gallery.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    setTimeout(updateScrollProgress, 400);
-  });
-  btnNext.addEventListener("click", () => {
-    gallery.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    setTimeout(updateScrollProgress, 400);
-  });
-
-  // ✅ 스크롤 시 진행바 업데이트
-  function updateScrollProgress() {
-    const scrollLeft = gallery.scrollLeft;
-    const scrollWidth = gallery.scrollWidth - gallery.clientWidth;
-    const percent = (scrollLeft / scrollWidth) * 100;
-    progressFill.style.width = `${percent}%`;
-  }
-  gallery.addEventListener("scroll", updateScrollProgress);
-
-  // ✅ 초기 상태
-  updateProgress(0);
-});
-
-
-
 
 // ✅ 1️⃣ 우클릭 방지
   document.addEventListener('contextmenu', function(e) {
@@ -200,3 +138,166 @@ document.addEventListener("DOMContentLoaded", function() {
       e.preventDefault();
     }
   });
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  /* ===============================
+     📸 갤러리 섹션
+  =============================== */
+  const mainPhoto = document.getElementById("main-photo");
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const gallery = document.getElementById("thumbnail-gallery");
+  const progressFill = document.getElementById("progress-fill");
+  const btnPrev = document.getElementById("thumb-prev");
+  const btnNext = document.getElementById("thumb-next");
+
+  // ✅ 썸네일 클릭 시 메인 이미지 변경 (페이드 효과 포함)
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => {
+      if (mainPhoto.src === thumb.src) return; // 같은 이미지면 무시
+
+      // 페이드 아웃 → 이미지 변경 → 페이드 인
+      mainPhoto.classList.add("fade-out");
+      setTimeout(() => {
+        mainPhoto.src = thumb.src;
+        mainPhoto.classList.remove("fade-out");
+      }, 250);
+
+      // 썸네일 active 표시
+      thumbnails.forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+
+      // 진행바 업데이트
+      updateProgress(index);
+
+      // 현재 index 저장 (라이트박스용)
+      currentIndex = index;
+    });
+  });
+
+  // ✅ 진행 바 업데이트
+  function updateProgress(index) {
+    const total = thumbnails.length;
+    const percent = ((index + 1) / total) * 100;
+    progressFill.style.width = `${percent}%`;
+  }
+
+  // ✅ 좌우 스크롤 버튼
+  const scrollAmount = 120;
+  btnPrev.addEventListener("click", () => {
+    gallery.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    setTimeout(updateScrollProgress, 400);
+  });
+  btnNext.addEventListener("click", () => {
+    gallery.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    setTimeout(updateScrollProgress, 400);
+  });
+
+  // ✅ 스크롤 시 진행바 업데이트
+  function updateScrollProgress() {
+    const scrollLeft = gallery.scrollLeft;
+    const scrollWidth = gallery.scrollWidth - gallery.clientWidth;
+    const percent = (scrollLeft / scrollWidth) * 100;
+    progressFill.style.width = `${percent}%`;
+  }
+  gallery.addEventListener("scroll", updateScrollProgress);
+  updateProgress(0);
+
+  /* ===============================
+     🌙 라이트박스(전체화면 보기)
+  =============================== */
+  const lightbox = document.createElement("div");
+  lightbox.id = "lightbox";
+  lightbox.innerHTML = `
+    <img id="lightbox-img" src="" alt="확대 이미지"
+         style="max-width: 90%; max-height: 80%; border-radius: 10px; user-select: none; pointer-events: none;">
+    <div style="margin-top: 20px; display: flex; gap: 25px;">
+      <button id="prev-btn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&#10094;</button>
+      <button id="close-btn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&#10005;</button>
+      <button id="next-btn" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&#10095;</button>
+    </div>
+  `;
+  Object.assign(lightbox.style, {
+    display: "none",
+    position: "fixed",
+    top: "0", left: "0",
+    width: "100%", height: "100%",
+    backgroundColor: "rgba(0,0,0,0.95)",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: "9999",
+    flexDirection: "column",
+  });
+  document.body.appendChild(lightbox);
+
+  const lightboxImg = document.getElementById("lightbox-img");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const closeBtn = document.getElementById("close-btn");
+  let currentIndex = 0;
+
+  // ✅ 메인 사진 클릭 시 라이트박스 열기
+  mainPhoto.addEventListener("click", () => {
+    const activeThumb = document.querySelector(".thumbnail.active");
+    currentIndex = Array.from(thumbnails).indexOf(activeThumb);
+    openLightbox(thumbnails[currentIndex].src);
+  });
+
+  // ✅ 썸네일 클릭 시 현재 index 업데이트
+  thumbnails.forEach((thumb, i) => {
+    thumb.addEventListener("click", () => {
+      currentIndex = i;
+    });
+  });
+
+  // ✅ 라이트박스 열기
+  function openLightbox(src) {
+    lightbox.style.display = "flex";
+    lightboxImg.src = src;
+  }
+
+  // ✅ 닫기
+  closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  // ✅ 좌우 이동
+  prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
+  nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
+
+  function showImage(index) {
+    if (index < 0) index = thumbnails.length - 1;
+    if (index >= thumbnails.length) index = 0;
+    currentIndex = index;
+    lightboxImg.src = thumbnails[currentIndex].src;
+  }
+
+  // ✅ 배경 클릭 시 닫기
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) lightbox.style.display = "none";
+  });
+
+  // ✅ 키보드 제어
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display !== "flex") return;
+    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+    if (e.key === "ArrowRight") showImage(currentIndex + 1);
+    if (e.key === "Escape") lightbox.style.display = "none";
+  });
+
+  /* ===============================
+     🛡️ 이미지 스크랩 방지
+  =============================== */
+  const allImages = document.querySelectorAll("img");
+  allImages.forEach(img => {
+    img.addEventListener("contextmenu", e => e.preventDefault());
+    img.addEventListener("dragstart", e => e.preventDefault());
+    img.addEventListener("touchstart", e => e.preventDefault());
+  });
+});
+
+
