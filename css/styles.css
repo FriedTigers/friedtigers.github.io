@@ -112,28 +112,49 @@ html, body {
       overscroll-behavior: none;
 }
 
-/* 💡 Masonry 기본 구조 */
+/* ✅ Masonry Layout */
 .masonry {
-  column-count: 3;        /* 기본 3열 */
+  column-count: 3;
   column-gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
 }
-.masonry img {
+.gallery-img {
   width: 100%;
   display: block;
   border-radius: 10px;
   margin-bottom: 12px;
+  transition: all 0.3s ease;
+  object-fit: cover;
 }
 
-/* 💡 모바일 대응 */
+/* ✅ 모바일 대응 */
 @media (max-width: 768px) {
-  .masonry {
-    column-count: 2;
-  }
+  .masonry { column-count: 2; }
 }
 @media (max-width: 480px) {
-  .masonry {
-    column-count: 1;
-  }
+  .masonry { column-count: 1; }
+}
+
+/* ✅ GLightbox 커스터마이징 */
+.glightbox-container .gslide-image img {
+  filter: none !important; /* 어두워지지 않게 */
+}
+
+.glightbox-container .gdesc-inner {
+  font-family: 'Nanum Myeongjo', serif !important;
+  font-size: 16px;
+  color: #f5f5f5;
+  text-align: center;
+  padding-top: 12px;
+}
+
+/* ✅ 하단 페이지 표시 스타일 */
+.glightbox-container .gslide-description {
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Nanum Myeongjo', serif;
+  color: #fff;
 }
 
 hr {

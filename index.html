@@ -308,25 +308,25 @@
               <p style="font-size: 22px; color: #c45b43; margin-top: 5px; margin-bottom: 25px;">| 갤러리 |</p>
             </div>
 
-            <!-- ✅ Masonry Grid -->
-            <div class="masonry" style="max-width: 800px; margin: 0 auto; column-count: 2; column-gap: 10px;">
+            <!-- ✅ Masonry Grid (비대칭) -->
+            <div class="masonry" id="masonry-gallery">
               <a href="assets/img/gallery/1.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/1.jpg" alt="사진1" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/1.jpg" alt="사진1" class="gallery-img">
               </a>
               <a href="assets/img/gallery/2.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/2.jpg" alt="사진2" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/2.jpg" alt="사진2" class="gallery-img">
               </a>
               <a href="assets/img/gallery/3.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/3.jpg" alt="사진3" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/3.jpg" alt="사진3" class="gallery-img">
               </a>
               <a href="assets/img/gallery/4.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/4.jpg" alt="사진4" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/4.jpg" alt="사진4" class="gallery-img">
               </a>
               <a href="assets/img/gallery/5.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/5.jpg" alt="사진5" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/5.jpg" alt="사진5" class="gallery-img">
               </a>
               <a href="assets/img/gallery/6.jpg" class="glightbox" data-gallery="wedding-gallery">
-                <img src="assets/img/gallery/6.jpg" alt="사진6" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+                <img src="assets/img/gallery/6.jpg" alt="사진6" class="gallery-img">
               </a>
             </div>
           </div>
@@ -652,20 +652,71 @@
           }
         </style>
         
-        <!-- ✅ JS 라이브러리 불러오기 -->
+        <!-- GLightbox & Swiper -->
         <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
         <script>
-          // ✅ Lightbox + Swiper 초기화
+          // ✅ Masonry 사진 비율 랜덤 부여
+          const ratios = [0.66, 0.75, 0.8, 1.2, 1.33]; // 대략 2:3 ~ 4:3 비율
+          const imgs = document.querySelectorAll('.gallery-img');
+          imgs.forEach(img => {
+            const ratio = ratios[Math.floor(Math.random() * ratios.length)];
+            img.style.height = `${Math.floor(200 * ratio)}px`; // 높이 비율 랜덤 적용
+          });
+
+          // ✅ Lightbox 설정
           const lightbox = GLightbox({
             selector: '.glightbox',
-            touchNavigation: true,   // 모바일 손가락 드래그 가능
-            loop: true,              // 마지막 → 첫 번째 순환
-            zoomable: true,
-            autoplayVideos: false
+            touchNavigation: true,
+            loop: true,
+            zoomable: false,
+            closeButton: true,
+            autoplayVideos: false,
+            slideEffect: 'fade',
+            lightboxHTML: `
+              <div class="gcontainer">
+                <div class="gslider"></div>
+                <div class="gnext"></div>
+                <div class="gprev"></div>
+                <div class="gclose"></div>
+                <div class="gdesc"></div>
+              </div>
+            `,
+            onOpen: () => {
+              updateCounter(1);
+            },
+            onSlideChanged: ({ index }) => {
+              updateCounter(index + 1);
+            }
+          });
+
+          // ✅ 현재 사진 번호 / 전체 사진 수 표시
+          const totalImages = imgs.length;
+          const counterEl = document.createElement('div');
+          counterEl.id = 'photo-counter';
+          counterEl.style.position = 'fixed';
+          counterEl.style.bottom = '25px';
+          counterEl.style.left = '50%';
+          counterEl.style.transform = 'translateX(-50%)';
+          counterEl.style.color = '#fff';
+          counterEl.style.fontFamily = "'Nanum Myeongjo', serif";
+          counterEl.style.fontSize = '16px';
+          counterEl.style.zIndex = '99999';
+          counterEl.style.display = 'none';
+          document.body.appendChild(counterEl);
+
+          function updateCounter(current) {
+            counterEl.style.display = 'block';
+            counterEl.textContent = `${current} / ${totalImages}`;
+          }
+
+          // ✅ Lightbox 닫힐 때 카운터 숨기기
+          document.addEventListener('glightbox_close', () => {
+            counterEl.style.display = 'none';
           });
         </script>
+
 
         <!-- Footer -->
         <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
