@@ -11252,3 +11252,13 @@ a.no-style {
   #thumbnail-gallery::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
   }
+
+img {
+    -webkit-touch-callout: none; /* iOS Safari에서 이미지 저장 막기 */
+    -webkit-user-drag: none;     /* 드래그 금지 */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: auto;
+  }

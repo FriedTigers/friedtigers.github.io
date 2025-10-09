@@ -128,3 +128,32 @@ gallery.scrollBy({ left: -150, behavior: 'smooth' });
 document.getElementById('thumb-next').addEventListener('click', () => {
 gallery.scrollBy({ left: 150, behavior: 'smooth' });
 });
+
+// ✅ 1️⃣ 마우스 오른쪽 클릭 방지
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // ✅ 2️⃣ 드래그로 이미지 끌기 방지
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
+  // ✅ 3️⃣ 이미지 선택 방지 (더블클릭/드래그 선택 등)
+  document.addEventListener('selectstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
+  // ✅ 4️⃣ 모바일에서 ‘길게 눌러 저장’ 방지
+  document.addEventListener('touchstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.target.style.pointerEvents = 'none';
+      setTimeout(() => {
+        e.target.style.pointerEvents = 'auto';
+      }, 300);
+    }
+  });
