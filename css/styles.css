@@ -697,12 +697,6 @@ progress {
   margin-left: auto;
 }
 
-.container, .content-section {
-  max-width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
@@ -4639,31 +4633,41 @@ textarea.form-control-lg {
   border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
 
-/* ✅ 전체 페이지 중앙 정렬 설정 */
+/* ✅ 전체 페이지 중앙정렬 */
 html {
-  background-color: #faf8f6; /* 페이지 여백 색상 */
+  background-color: #faf8f6;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: none; /* body 배경 제거 */
+  background: none;
 }
 
-/* ✅ 본문 박스 중앙 배치 */
+/* ✅ 중앙 컨테이너 */
 .page-wrapper {
-  width: 50%;                     /* 💻 PC 화면에서 절반 폭 */
-  margin: 0 auto;                 /* 중앙 정렬 */
-  background-color: #fff;         /* 본문 배경 */
-  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* 은은한 그림자 */
+  width: 80%;                    /* 50% → 80% 로 변경 (절반의 절반 방지) */
+  max-width: 800px;              /* 데스크톱에서 카드형으로 고정 */
+  margin: 0 auto;                /* 중앙 정렬 */
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
   border-radius: 12px;
-  overflow-x: hidden;             /* 가로 스크롤 방지 */
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* ✅ 모바일 대응 */
+/* ✅ Bootstrap의 container 폭 제한 해제 */
+.container,
+.content-section {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ✅ 모바일 반응형 */
 @media (max-width: 1024px) {
   .page-wrapper {
-    width: 90%;
+    width: 95%;
     border-radius: 0;
     box-shadow: none;
   }
