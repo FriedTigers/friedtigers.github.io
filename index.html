@@ -299,23 +299,44 @@
         </section>
 
 
-        <!-- Photo Zone -->
-        <section class="content-section" id="portfolio">
+        <!-- 📸 Photo Gallery Section -->
+        <section class="content-section" id="portfolio" style="background-color: #fff;">
           <div class="container px-4 px-lg-5 text-center">
             <div class="content-section-heading">
               <p style="font-size: 22px; color: #c45b43; margin-top: 5px; margin-bottom: 25px;">| 갤러리 |</p>
             </div>
-            <div class="row gx-0 justify-content-center"> <!-- ✅ 중앙 정렬 -->
-              <div class="col-lg-6 col-md-8 col-sm-10"> <!-- ✅ 가변 폭 -->
-                <a class="portfolio-item" href="pages/studio.html">
-                  <div class="caption">
-                    <div class="caption-content">
-                      <div class="h2" style="font-family: 'Nanum Myeongjo', serif;">≫ Snap shot in Jeju</div>
-                    </div>
-                  </div>
-                  <img class="img-fluid" src="assets/img/main.jpg" alt="..." style="border-radius: 8px;" />
-                </a>
+
+            <!-- ✅ Carousel -->
+            <div id="weddingCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner" style="max-width: 480px; margin: 0 auto; border-radius: 10px; overflow: hidden;">
+
+                <!-- 사진 1 -->
+                <div class="carousel-item active">
+                  <img src="assets/img/gallery/1.jpg" class="d-block w-100" alt="신랑신부 사진 1">
+                </div>
+
+                <!-- 사진 2 -->
+                <div class="carousel-item">
+                  <img src="assets/img/gallery/2.jpg" class="d-block w-100" alt="신랑신부 사진 2">
+                </div>
+
+                <!-- 사진 3 -->
+                <div class="carousel-item">
+                  <img src="assets/img/gallery/3.jpg" class="d-block w-100" alt="신랑신부 사진 3">
+                </div>
+
               </div>
+
+              <!-- ✅ 좌우 이동 버튼 -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+
+              <button class="carousel-control-next" type="button" data-bs-target="#weddingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
           </div>
         </section>
