@@ -97,37 +97,70 @@ function openTab(tabName) {
 
     document.getElementById(tabName).style.display = 'block';
     event.currentTarget.style.borderBottom = '2px solid #c45b43';
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const mainPhoto = document.getElementById("main-photo");
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const gallery = document.getElementById("thumbnail-gallery");
+  const progressFill = document.getElementById("progress-fill");
+  const btnPrev = document.getElementById("thumb-prev");
+  const btnNext = document.getElementById("thumb-next");
+
+  // ✅ 썸네일 클릭 시 메인 이미지 변경 (페이드 효과 포함)
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => {
+      if (mainPhoto.src === thumb.src) return; // 같은 이미지면 무시
+
+      // 페이드 아웃 → 이미지 변경 → 페이드 인
+      mainPhoto.classList.add("fade-out");
+      setTimeout(() => {
+        mainPhoto.src = thumb.src;
+        mainPhoto.classList.remove("fade-out");
+      }, 250);
+
+      // 썸네일 active 표시
+      thumbnails.forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+
+      // 진행바 업데이트
+      updateProgress(index);
+    });
+  });
+
+  // ✅ 진행바 업데이트
+  function updateProgress(index) {
+    const total = thumbnails.length;
+    const percent = ((index + 1) / total) * 100;
+    progressFill.style.width = `${percent}%`;
   }
 
-const thumbnails = document.querySelectorAll('.thumbnail');
-const mainPhoto = document.getElementById('main-photo');
-const gallery = document.getElementById('thumbnail-gallery');
-const progressFill = document.getElementById('progress-fill');
+  // ✅ 좌우 버튼 클릭
+  const scrollAmount = 120;
+  btnPrev.addEventListener("click", () => {
+    gallery.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    setTimeout(updateScrollProgress, 400);
+  });
+  btnNext.addEventListener("click", () => {
+    gallery.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    setTimeout(updateScrollProgress, 400);
+  });
 
-// ✅ 썸네일 클릭 → 메인 사진 변경
-thumbnails.forEach(thumb => {
-thumb.addEventListener('click', () => {
-    thumbnails.forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-    mainPhoto.src = thumb.src;
-});
+  // ✅ 스크롤 시 진행바 업데이트
+  function updateScrollProgress() {
+    const scrollLeft = gallery.scrollLeft;
+    const scrollWidth = gallery.scrollWidth - gallery.clientWidth;
+    const percent = (scrollLeft / scrollWidth) * 100;
+    progressFill.style.width = `${percent}%`;
+  }
+  gallery.addEventListener("scroll", updateScrollProgress);
+
+  // ✅ 초기 상태
+  updateProgress(0);
 });
 
-  // ✅ 스크롤 시 진행 막대 업데이트
-gallery.addEventListener('scroll', () => {
-const scrollLeft = gallery.scrollLeft;
-const scrollWidth = gallery.scrollWidth - gallery.clientWidth;
-const progress = (scrollLeft / scrollWidth) * 100;
-progressFill.style.width = `${progress}%`;
-});
 
-  // ✅ 좌우 버튼
-document.getElementById('thumb-prev').addEventListener('click', () => {
-gallery.scrollBy({ left: -150, behavior: 'smooth' });
-});
-document.getElementById('thumb-next').addEventListener('click', () => {
-gallery.scrollBy({ left: 150, behavior: 'smooth' });
-});
+
 
 // ✅ 1️⃣ 우클릭 방지
   document.addEventListener('contextmenu', function(e) {

@@ -11236,21 +11236,29 @@ a.no-style {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
-.thumbnail {
-    width: 70px;
-    height: 70px;
+/* 썸네일 스타일 */
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
     object-fit: cover;
-    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.25s, opacity 0.25s;
+    opacity: 0.7;
   }
   .thumbnail.active {
-    border: 2px solid #c45b43;
+    opacity: 1;
     transform: scale(1.05);
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
   }
-  #thumbnail-gallery::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+
+  /* 메인 이미지 페이드 효과 */
+  #main-photo {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  #main-photo.fade-out {
+    opacity: 0;
   }
 
 img {
