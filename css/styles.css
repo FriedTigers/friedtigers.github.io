@@ -4633,46 +4633,6 @@ textarea.form-control-lg {
   border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
 
-/* ✅ 전체 페이지 중앙정렬 */
-html {
-  background-color: #faf8f6;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-
-/* ✅ 중앙 컨테이너 */
-.page-wrapper {
-  width: 80%;                    /* 50% → 80% 로 변경 (절반의 절반 방지) */
-  max-width: 800px;              /* 데스크톱에서 카드형으로 고정 */
-  margin: 0 auto;                /* 중앙 정렬 */
-  background-color: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.08);
-  border-radius: 12px;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-/* ✅ Bootstrap의 container 폭 제한 해제 */
-.container,
-.content-section {
-  max-width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* ✅ 모바일 반응형 */
-@media (max-width: 1024px) {
-  .page-wrapper {
-    width: 95%;
-    border-radius: 0;
-    box-shadow: none;
-  }
-}
-
 .pagination-lg {
   --bs-pagination-padding-x: 1.5rem;
   --bs-pagination-padding-y: 0.75rem;
