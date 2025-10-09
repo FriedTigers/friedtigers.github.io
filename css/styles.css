@@ -4632,6 +4632,17 @@ textarea.form-control-lg {
   border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
 
+.page-wrapper {
+  width: 50%;                /* 전체 화면의 절반 폭 */
+  margin: 0 auto;            /* 화면 가운데 정렬 */
+  background-color: #fff;    /* 본문 영역 배경색 */
+  min-height: 100vh;         /* 페이지 전체 높이 확보 */
+  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* 살짝 그림자 */
+}
+
+html {
+  background-color: #faf8f6;  /* 전체 배경색 (여백 부분) */
+}
 .pagination-lg {
   --bs-pagination-padding-x: 1.5rem;
   --bs-pagination-padding-y: 0.75rem;
