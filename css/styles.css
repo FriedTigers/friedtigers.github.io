@@ -4634,11 +4634,11 @@ textarea.form-control-lg {
 }
 
 .page-wrapper {
-  width: 50%;                /* 전체 화면의 절반 폭 */
-  margin: 0 auto;            /* 화면 가운데 정렬 */
-  background-color: #fff;    /* 본문 영역 배경색 */
-  min-height: 100vh;         /* 페이지 전체 높이 확보 */
-  box-shadow: 0 0 20px rgba(0,0,0,0.1); /* 살짝 그림자 */
+  width: 50%;
+  min-height: 100%;
+  background-color: #fff;   /* 내용 배경 */
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
 }
 
 html {
