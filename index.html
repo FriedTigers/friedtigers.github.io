@@ -312,18 +312,49 @@
             <!-- ✅ 큰 메인 이미지 -->
             <div id="main-photo-container" style="margin-bottom: 20px;">
               <img id="main-photo" src="assets/img/gallery/1.jpg" alt="메인 사진"
-                   style="max-width: 100%; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                   style="width: 90%; max-width: 400px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); transition: all 0.3s ease;">
             </div>
 
-            <!-- ✅ 썸네일 그리드 -->
-            <div id="thumbnail-gallery"
-                 style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-              <img src="assets/img/gallery/1.jpg" alt="사진1" class="thumbnail active">
-              <img src="assets/img/gallery/2.jpg" alt="사진2" class="thumbnail">
-              <img src="assets/img/gallery/3.jpg" alt="사진3" class="thumbnail">
-              <img src="assets/img/gallery/4.jpg" alt="사진4" class="thumbnail">
-              <img src="assets/img/gallery/5.jpg" alt="사진5" class="thumbnail">
-              <img src="assets/img/gallery/6.jpg" alt="사진6" class="thumbnail">
+            <!-- ✅ 썸네일 슬라이드 -->
+            <div style="position: relative; max-width: 450px; margin: 0 auto;">
+              <!-- 좌우 버튼 -->
+              <button id="thumb-prev" style="
+                  position: absolute; left: -20px; top: 35%;
+                  transform: translateY(-50%);
+                  border: none; background: rgba(255,255,255,0.8);
+                  border-radius: 50%; width: 30px; height: 30px;
+                  box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer;">‹</button>
+              
+              <div id="thumbnail-gallery"
+                   style="
+                     display: flex;
+                     overflow-x: auto;
+                     scroll-behavior: smooth;
+                     gap: 10px;
+                     padding-bottom: 10px;
+                     scrollbar-width: none; /* Firefox */
+                   ">
+                <img src="assets/img/gallery/1.jpg" alt="사진1" class="thumbnail active">
+                <img src="assets/img/gallery/2.jpg" alt="사진2" class="thumbnail">
+                <img src="assets/img/gallery/3.jpg" alt="사진3" class="thumbnail">
+                <img src="assets/img/gallery/4.jpg" alt="사진4" class="thumbnail">
+                <img src="assets/img/gallery/5.jpg" alt="사진5" class="thumbnail">
+                <img src="assets/img/gallery/6.jpg" alt="사진6" class="thumbnail">
+              </div>
+
+              <button id="thumb-next" style="
+                  position: absolute; right: -20px; top: 35%;
+                  transform: translateY(-50%);
+                  border: none; background: rgba(255,255,255,0.8);
+                  border-radius: 50%; width: 30px; height: 30px;
+                  box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer;">›</button>
+
+              <!-- 진행 막대 -->
+              <div id="progress-bar"
+                   style="width: 100%; height: 4px; background: #eee; border-radius: 2px; margin-top: 8px; overflow: hidden;">
+                <div id="progress-fill"
+                     style="width: 0%; height: 100%; background: #c45b43; border-radius: 2px; transition: width 0.3s ease;"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -646,28 +677,6 @@
             bottom: 60px;
           }
         </style>
-        
-        <script>
-          const mainPhoto = document.getElementById('main-photo');
-          const thumbnails = document.querySelectorAll('.thumbnail');
-
-          thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', () => {
-              // 큰 이미지 변경
-              mainPhoto.src = thumbnail.src;
-
-              // 활성 썸네일 표시
-              thumbnails.forEach(t => t.classList.remove('active'));
-              thumbnail.classList.add('active');
-            });
-          });
-
-          // 큰 사진 클릭 시 확대 보기 (Lightbox)
-          mainPhoto.addEventListener('click', () => {
-            const lightbox = window.open(mainPhoto.src, '_blank');
-            lightbox.focus();
-          });
-        </script>
 
 
         <!-- Footer -->

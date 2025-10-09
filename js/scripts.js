@@ -98,3 +98,33 @@ function openTab(tabName) {
     document.getElementById(tabName).style.display = 'block';
     event.currentTarget.style.borderBottom = '2px solid #c45b43';
   }
+
+const thumbnails = document.querySelectorAll('.thumbnail');
+const mainPhoto = document.getElementById('main-photo');
+const gallery = document.getElementById('thumbnail-gallery');
+const progressFill = document.getElementById('progress-fill');
+
+// ✅ 썸네일 클릭 → 메인 사진 변경
+thumbnails.forEach(thumb => {
+thumb.addEventListener('click', () => {
+    thumbnails.forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    mainPhoto.src = thumb.src;
+});
+});
+
+  // ✅ 스크롤 시 진행 막대 업데이트
+gallery.addEventListener('scroll', () => {
+const scrollLeft = gallery.scrollLeft;
+const scrollWidth = gallery.scrollWidth - gallery.clientWidth;
+const progress = (scrollLeft / scrollWidth) * 100;
+progressFill.style.width = `${progress}%`;
+});
+
+  // ✅ 좌우 버튼
+document.getElementById('thumb-prev').addEventListener('click', () => {
+gallery.scrollBy({ left: -150, behavior: 'smooth' });
+});
+document.getElementById('thumb-next').addEventListener('click', () => {
+gallery.scrollBy({ left: 150, behavior: 'smooth' });
+});
