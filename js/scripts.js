@@ -293,11 +293,12 @@ document.addEventListener("DOMContentLoaded", function() {
      🛡️ 이미지 스크랩 방지
   =============================== */
   const allImages = document.querySelectorAll("img");
-  allImages.forEach(img => {
-    img.addEventListener("contextmenu", e => e.preventDefault());
-    img.addEventListener("dragstart", e => e.preventDefault());
-    img.addEventListener("touchstart", e => e.preventDefault());
-  });
-});
+    allImages.forEach(img => {
+      img.addEventListener("contextmenu", e => e.preventDefault()); // 우클릭 방지
+      img.addEventListener("dragstart", e => e.preventDefault());   // 드래그 방지
+      img.addEventListener("mousedown", e => {
+        if (e.button === 2) e.preventDefault();                     // 마우스 우클릭
+      });
+    });
 
 
