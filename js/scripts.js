@@ -147,11 +147,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // ✅ 썸네일 클릭 시 메인 이미지 변경
   thumbnails.forEach((thumb, index) => {
     thumb.addEventListener("click", () => {
-      if (mainPhoto.src === thumb.src) return;
+      if (mainPhoto.style.backgroundImage === `url("${thumb.src}")`) return;
       mainPhoto.classList.add("fade-out");
       setTimeout(() => {
-        mainPhoto.src = thumb.src;
-        mainPhoto.classList.remove("fade-out");
+          mainPhoto.style.backgroundImage = `url("${thumb.src}")`;
+          mainPhoto.classList.remove("fade-out");
       }, 250);
       thumbnails.forEach(t => t.classList.remove("active"));
       thumb.classList.add("active");
@@ -207,11 +207,12 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentIndex = 0;
 
   // ✅ 메인 사진 클릭 시 라이트박스 열기
-  mainPhoto.addEventListener("click", () => {
-    const activeThumb = document.querySelector(".thumbnail.active");
-    currentIndex = Array.from(thumbnails).indexOf(activeThumb);
-    openLightbox(thumbnails[currentIndex].src);
-  });
+    mainPhoto.addEventListener("click", () => {
+      const activeThumb = document.querySelector(".thumbnail.active");
+      currentIndex = Array.from(thumbnails).indexOf(activeThumb);
+      const src = thumbnails[currentIndex].src; // 썸네일 이미지 경로 그대로 사용
+      openLightbox(src);
+    });
 
   function openLightbox(src) {
     lightbox.style.display = "flex";

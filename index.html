@@ -349,15 +349,21 @@
 
             <!-- ✅ 큰 메인 이미지 (크기 절반으로 축소) -->
                 <div id="main-photo-container" style="margin-bottom: 20px;">
-                  <img id="main-photo" src="assets/img/gallery/a1.jpeg" alt="메인 사진"
-                      style="
-                             height: 400px;              /* ✅ 높이 고정 */
-                             width: auto;                /* ✅ 가로는 자동 (비율 유지) */
-                             border-radius: 10px;
-                             box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-                             transition: all 0.3s ease;
-                             pointer-events: auto;
-                           ">
+                    <div id="main-photo"
+                         style="
+                           height: 400px;
+                           width: 280px;
+                           background-image: url('assets/img/gallery/a1.jpeg');
+                           background-size: contain;
+                           background-position: center;
+                           background-repeat: no-repeat;
+                           border-radius: 10px;
+                           box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+                           transition: all 0.3s ease;
+                           margin: 0 auto;
+                           cursor: pointer;
+                         ">
+                    </div>
                 </div>
                 
                 <!-- 🔍 전체화면 라이트박스 -->
