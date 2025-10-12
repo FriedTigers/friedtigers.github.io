@@ -255,10 +255,18 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // ✅ 라이트박스 열기
-  function openLightbox(src) {
-    lightbox.style.display = "flex";
-    lightboxImg.src = src;
-  }
+    function openLightbox(src) {
+      lightbox.style.display = "flex";
+      lightbox.style.pointerEvents = "auto";
+      lightboxImg.style.opacity = "0"; // 시작은 투명
+      lightboxImg.src = src;
+
+      // 브라우저 렌더링 완료 후 fade-in
+      requestAnimationFrame(() => {
+        lightboxImg.style.transition = "opacity 0.3s ease-in-out";
+        lightboxImg.style.opacity = "1";
+      });
+    }
 
   // ✅ 닫기
   closeBtn.addEventListener("click", () => {
@@ -301,4 +309,13 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
+    let clickLock = false;
+    mainPhoto.addEventListener("click", () => {
+      if (clickLock) return;
+      clickLock = true;
+      setTimeout(() => clickLock = false, 300);
 
+      const activeThumb = document.querySelector(".thumbnail.active");
+      currentIndex = Array.from(thumbnails).indexOf(activeThumb);
+      openLightbox(thumbnails[currentIndex].src);
+    });
