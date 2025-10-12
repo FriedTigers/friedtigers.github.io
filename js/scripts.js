@@ -115,6 +115,7 @@ function openTab(tabName) {
 // 📸 갤러리 + 라이트박스
 //////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
+
   const mainPhoto = document.getElementById("main-photo");
   const thumbnails = document.querySelectorAll(".thumbnail");
   const gallery = document.getElementById("thumbnail-gallery");
@@ -184,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeBtn = lightbox.querySelector("#close-btn");
   let currentIndex = 0;
 
+  // ✅ 메인 사진 클릭 시 라이트박스 열기
   mainPhoto.addEventListener("click", () => {
     const activeThumb = document.querySelector(".thumbnail.active");
     currentIndex = Array.from(thumbnails).indexOf(activeThumb);
@@ -195,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function() {
     lightbox.style.pointerEvents = "auto";
     lightboxImg.style.opacity = "0";
     lightboxImg.src = src;
-
     requestAnimationFrame(() => {
       lightbox.style.opacity = "1";
       lightboxImg.style.opacity = "1";
@@ -238,24 +239,22 @@ document.addEventListener("DOMContentLoaded", function() {
     if (e.key === "Escape") closeLightbox();
   });
 
-  //////////////////////////////////////
   // 🛡️ 스크랩 방지 (모바일 친화)
-  //////////////////////////////////////
   document.addEventListener('contextmenu', e => e.preventDefault());
   document.addEventListener('dragstart', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
   });
-
   document.addEventListener('touchstart', (e) => {
     clearTimeout(window.touchTimer);
     window.touchTimer = setTimeout(() => {
       e.preventDefault(); // 길게 눌렀을 때만 방지
     }, 700);
   }, { passive: true });
-
   document.addEventListener('touchend', () => clearTimeout(window.touchTimer), { passive: true });
   document.addEventListener('gesturestart', e => e.preventDefault());
-});
+
+}); // ✅ ← DOMContentLoaded 완전히 닫힘
+
 
 //////////////////////////////////////
 // 🌍 HTML onclick 함수 전역 등록
