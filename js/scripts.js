@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const progressFill = document.getElementById("progress-fill");
   const btnPrev = document.getElementById("thumb-prev");
   const btnNext = document.getElementById("thumb-next");
+    
     // SDK 스크립트가 로드되었는지 확인
     if (typeof window.Kakao !== "undefined" && !window.Kakao.isInitialized()) {
       window.Kakao.init('7c96defb93355a299eed984f7f2cf82e');
@@ -158,6 +159,21 @@ document.addEventListener("DOMContentLoaded", function() {
       updateProgress(index);
       currentIndex = index;
     });
+      const fadeSections = document.querySelectorAll('.fade-in-section');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // ✅ 한 번만 실행 (불필요한 연산 제거)
+          }
+        });
+      }, {
+        threshold: 0.15,  // 15% 노출될 때 작동
+        rootMargin: "0px 0px -10% 0px" // 약간 미리 시작
+      });
+
+      fadeSections.forEach(section => observer.observe(section));
   });
 
   function updateProgress(index) {

@@ -11280,3 +11280,17 @@ img {
     -webkit-user-select: none;
     user-select: none;
   }
+
+/* 🔸 기본 상태 (숨김) */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform; /* GPU 가속 */
+}
+
+/* 🔸 스크롤로 화면에 들어올 때 활성화 */
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
