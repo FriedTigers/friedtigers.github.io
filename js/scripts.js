@@ -71,32 +71,47 @@ function showToast(message) {
 // 💬 카카오톡 공유
 //////////////////////////////////////
 function kakaoShare() {
-  Kakao.init('7c96defb93355a299eed984f7f2cf82e');
-  if (!Kakao.isInitialized()) {
-    alert("카카오 SDK 초기화 실패");
+  // SDK 준비 여부 확인
+  if (typeof Kakao === "undefined") {
+    showToast("카카오 SDK가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요 🙏");
     return;
   }
-  Kakao.Share.sendDefault({
-    objectType: 'feed',
-    content: {
-      title: '민준 ♥️ 서윤 결혼합니다💍',
-      description: '2026.01.25 (일) 오후 3시 30분 로얄파크컨벤션 3F 로얄홀',
-      imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/kakaomain.png?raw=true',
-      link: {
-        mobileWebUrl: 'https://friedtigers.github.io/',
-        webUrl: 'https://friedtigers.github.io/',
-      },
-    },
-    buttons: [
-      {
-        title: '모바일 청첩장 보기',
+
+  if (!Kakao.isInitialized()) {
+    showToast("카카오 준비 중입니다... 잠시만 기다려주세요 🙏");
+    return;
+  }
+
+  // 사용자 피드백 (느리게 느껴질 때 대비)
+  showToast("카카오톡을 여는 중입니다...");
+
+  try {
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '민준 ♥️ 서윤 결혼합니다💍',
+        description: '2026.01.25 (일) 오후 3시 30분 로얄파크컨벤션 3F 로얄홀',
+        imageUrl: 'https://github.com/FriedTigers/friedtigers.github.io/blob/main/assets/img/kakaomain.png?raw=true',
         link: {
           mobileWebUrl: 'https://friedtigers.github.io/',
           webUrl: 'https://friedtigers.github.io/',
         },
       },
-    ],
-  });
+      buttons: [
+        {
+          title: '모바일 청첩장 보기',
+          link: {
+            mobileWebUrl: 'https://friedtigers.github.io/',
+            webUrl: 'https://friedtigers.github.io/',
+          },
+        },
+      ],
+      installTalk: true,
+    });
+  } catch (err) {
+    console.error("❌ Kakao share failed:", err);
+    showToast("카카오톡을 여는 중 오류가 발생했습니다 😢");
+  }
 }
 
 //////////////////////////////////////
@@ -122,7 +137,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const progressFill = document.getElementById("progress-fill");
   const btnPrev = document.getElementById("thumb-prev");
   const btnNext = document.getElementById("thumb-next");
-
+    // SDK 스크립트가 로드되었는지 확인
+    if (typeof window.Kakao !== "undefined" && !window.Kakao.isInitialized()) {
+      window.Kakao.init('7c96defb93355a299eed984f7f2cf82e');
+      console.log('✅ Kakao SDK initialized');
+    } else {
+      console.warn("⚠️ Kakao SDK not found. Check script tag or network.");
+    }
   // ✅ 썸네일 클릭 시 메인 이미지 변경
   thumbnails.forEach((thumb, index) => {
     thumb.addEventListener("click", () => {
