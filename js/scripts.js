@@ -1,11 +1,11 @@
 /*!
-* Wedding Invitation Custom JS (by Minjun & ChatGPT)
-* Mobile-Optimized with Safe Event Handling
-*/
+ * Wedding Invitation Custom JS (Final Stable Version)
+ * Compatible with HTML onclick calls (toggleFoldable, kakaoShare, copyLink)
+ */
 
-/* ===============================
-   📎 링크 복사
-=============================== */
+//////////////////////////////////////
+// 📎 링크 복사
+//////////////////////////////////////
 function copyLink() {
   const url = 'https://friedtigers.github.io';
   if (navigator.clipboard) {
@@ -23,9 +23,9 @@ function copyLink() {
   }
 }
 
-/* ===============================
-   💳 신랑·신부측 계좌 접기/펼치기
-=============================== */
+//////////////////////////////////////
+// 💳 접기/펼치기 (신랑·신부측 계좌)
+//////////////////////////////////////
 function toggleFoldable(selector, iconSelector) {
   const content = document.querySelector(selector);
   const icon = document.querySelector(iconSelector);
@@ -38,9 +38,9 @@ function toggleFoldable(selector, iconSelector) {
   }
 }
 
-/* ===============================
-   💰 계좌번호 복사
-=============================== */
+//////////////////////////////////////
+// 💰 계좌번호 복사
+//////////////////////////////////////
 function copyAccount(accountNumber) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(accountNumber)
@@ -57,9 +57,9 @@ function copyAccount(accountNumber) {
   }
 }
 
-/* ===============================
-   🔔 토스트 메시지
-=============================== */
+//////////////////////////////////////
+// 🔔 토스트 메시지
+//////////////////////////////////////
 function showToast(message) {
   const toast = document.getElementById('toast');
   toast.textContent = message;
@@ -67,9 +67,9 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-/* ===============================
-   💬 카카오톡 공유
-=============================== */
+//////////////////////////////////////
+// 💬 카카오톡 공유
+//////////////////////////////////////
 function kakaoShare() {
   Kakao.init('7c96defb93355a299eed984f7f2cf82e');
   if (!Kakao.isInitialized()) {
@@ -99,9 +99,9 @@ function kakaoShare() {
   });
 }
 
-/* ===============================
-   🗂 탭 전환
-=============================== */
+//////////////////////////////////////
+// 🗂 탭 전환 (예식정보/식사/주차)
+//////////////////////////////////////
 function openTab(tabName) {
   const contents = document.querySelectorAll('.tab-content');
   const buttons = document.querySelectorAll('.tab-btn');
@@ -111,9 +111,9 @@ function openTab(tabName) {
   event.currentTarget.style.borderBottom = '2px solid #c45b43';
 }
 
-/* ===============================
-   📸 갤러리 & 라이트박스
-=============================== */
+//////////////////////////////////////
+// 📸 갤러리 + 라이트박스
+//////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
   const mainPhoto = document.getElementById("main-photo");
   const thumbnails = document.querySelectorAll(".thumbnail");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnPrev = document.getElementById("thumb-prev");
   const btnNext = document.getElementById("thumb-next");
 
-  /* ✅ 썸네일 클릭 시 메인 이미지 변경 */
+  // ✅ 썸네일 클릭 시 메인 이미지 변경
   thumbnails.forEach((thumb, index) => {
     thumb.addEventListener("click", () => {
       if (mainPhoto.src === thumb.src) return;
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
     gallery.scrollBy({ left: 120, behavior: "smooth" });
   });
 
-  /* ✅ 라이트박스 생성 */
+  // ✅ 라이트박스 생성
   const lightbox = document.createElement("div");
   lightbox.id = "lightbox";
   lightbox.innerHTML = `
@@ -184,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeBtn = lightbox.querySelector("#close-btn");
   let currentIndex = 0;
 
-  /* ✅ 메인 사진 클릭 시 라이트박스 열기 */
   mainPhoto.addEventListener("click", () => {
     const activeThumb = document.querySelector(".thumbnail.active");
     currentIndex = Array.from(thumbnails).indexOf(activeThumb);
@@ -203,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  /* ✅ 닫기 (페이드아웃 애니메이션 추가) */
+  // ✅ 닫기 (페이드아웃)
   function closeLightbox() {
     lightbox.style.opacity = "0";
     lightboxImg.style.opacity = "0";
@@ -218,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (e.target === lightbox) closeLightbox();
   });
 
-  /* ✅ 좌우 이동 */
   prevBtn.addEventListener("click", () => showImage(currentIndex - 1));
   nextBtn.addEventListener("click", () => showImage(currentIndex + 1));
 
@@ -233,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 200);
   }
 
-  /* ✅ 키보드 제어 */
   document.addEventListener("keydown", (e) => {
     if (lightbox.style.display !== "flex") return;
     if (e.key === "ArrowLeft") showImage(currentIndex - 1);
@@ -241,18 +238,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* ===============================
-     🛡️ 스크랩 방지 (모바일 친화)
-  =============================== */
-  // 우클릭 방지
+  //////////////////////////////////////
+  // 🛡️ 스크랩 방지 (모바일 친화)
+  //////////////////////////////////////
   document.addEventListener('contextmenu', e => e.preventDefault());
-
-  // 이미지 드래그 방지
   document.addEventListener('dragstart', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
   });
 
-  // 터치 오래 누르기 방지 (일반 클릭 허용)
   document.addEventListener('touchstart', (e) => {
     clearTimeout(window.touchTimer);
     window.touchTimer = setTimeout(() => {
@@ -261,7 +254,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { passive: true });
 
   document.addEventListener('touchend', () => clearTimeout(window.touchTimer), { passive: true });
-
-  // iOS 확대 제스처 방지
   document.addEventListener('gesturestart', e => e.preventDefault());
 });
+
+//////////////////////////////////////
+// 🌍 HTML onclick 함수 전역 등록
+//////////////////////////////////////
+window.copyLink = copyLink;
+window.copyAccount = copyAccount;
+window.toggleFoldable = toggleFoldable;
+window.kakaoShare = kakaoShare;
+window.openTab = openTab;
