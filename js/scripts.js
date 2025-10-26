@@ -6,6 +6,8 @@
 //////////////////////////////////////
 // 📎 링크 복사
 //////////////////////////////////////
+window.location.href = 'https://minjun-seoyoon.github.io'
+
 function copyLink() {
   const url = 'https://friedtigers.github.io';
   if (navigator.clipboard) {
